@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="492.0" style="-fx-background-color: #171A34;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.controladores.vendedor.FormularioVendedorController">
+   <children>
+      
+      <Button fx:id="botonVolverPrincipal" layoutX="29.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#volverAprincipal" style="-fx-background-color: WHITE;" text="VOLVER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonCancelar" layoutX="141.0" layoutY="378.0" mnemonicParsing="false" text="CANCELAR" />
+      <Button fx:id="botonRegistrar" layoutX="322.0" layoutY="378.0" mnemonicParsing="false" onMouseClicked="#onRegistrarVendedor" text="REGISTRAR" />
+      <TextField fx:id="inputCedula" layoutX="273.0" layoutY="97.0" />
+      <TextField fx:id="inputNomCompleto" layoutX="273.0" layoutY="154.0" />
+      <TextField fx:id="inputCorreo" layoutX="273.0" layoutY="209.0" />
+      <TextField fx:id="inputTelefono" layoutX="273.0" layoutY="260.0" />
+      <TextField fx:id="inputDireccion" layoutX="273.0" layoutY="316.0" />
+      <Label layoutX="84.0" layoutY="101.0" text="CEDULA" textFill="WHITE" />
+      <Label layoutX="84.0" layoutY="158.0" text="NOMBRE COMPLETO" textFill="WHITE" />
+      <Label layoutX="86.0" layoutY="264.0" text="TELEFONO" textFill="WHITE" />
+      <Label layoutX="84.0" layoutY="320.0" text="DIRECCION" textFill="WHITE" />
+      <Label layoutX="83.0" layoutY="213.0" text="CORREO" textFill="WHITE" />
+      <Label layoutX="184.0" layoutY="46.0" prefHeight="28.0" prefWidth="143.0" text="REGISTRO" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Black" size="24.0" />
+         </font>
+      </Label>
+      
+   </children>
+</AnchorPane>

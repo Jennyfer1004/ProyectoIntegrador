@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #171A34;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.controladores.gerente.GerenteController">
+   <children>
+      <Label layoutX="292.0" layoutY="66.0" text="BIENVENIDO GERENTE" textFill="#fcf8f8">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="36.0" />
+         </font></Label>
+      <Button fx:id="botonCerrarSesion" layoutX="899.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#cerrarSesion" text="Cerrar Sesion" />
+      <Button fx:id="botonGestVendedores" layoutX="147.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#irGestionVendedores" text="Gestionar Vendedores" textFill="#292c32">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonGestProductos" layoutX="458.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#irGestionProductos" text="Gestionar Productos">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonGestProveedores" layoutX="292.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#irGestionProveedores" text="Gestionar Proveedores">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="boronConsFacturas" layoutX="733.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#irConsulFacturas" text="Consutar Facturas">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonConsulReportes" layoutX="551.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#irConsulReportes" text="Consultar reportes de ventas">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

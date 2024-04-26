@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #171A34;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.controladores.administrador.AdministradorController">
+   <children>
+      <Label layoutX="265.0" layoutY="44.0" text="BIENVENIDO ADMINISTRADOR" textFill="#f2f0f0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="36.0" />
+         </font></Label>
+      <Button fx:id="botonCerrarSesion" layoutX="899.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#cerrarSesion" text="Cerrar Sesion" />
+      <Button fx:id="botonGestVendedor" layoutX="91.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#irGestionUsuarios" text="Gestionar Vendedores" textFill="#292c32">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="botonGestProductos" layoutX="407.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#irGestionProductos" text="Gestionar Productos">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="botonGestCliente" layoutX="416.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#irGestionClientes" text="Gestionar Clientes">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="botonGestProveedores" layoutX="715.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#irGestionProveedores" text="Gestionar Proveedores">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="botonGestVentas" layoutX="99.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#irGestionVentas" text="Gestionar Ventas">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="botonConsulReportes" layoutX="691.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#irConsultarReportes" text="Consultar reportes de ventas">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
