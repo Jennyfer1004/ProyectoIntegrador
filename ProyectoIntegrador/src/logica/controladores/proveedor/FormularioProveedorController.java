@@ -1,4 +1,4 @@
-package presentacion.controladores.proveedor;
+package logica.controladores.proveedor;
 
 import java.io.IOException;
 import java.net.URL;

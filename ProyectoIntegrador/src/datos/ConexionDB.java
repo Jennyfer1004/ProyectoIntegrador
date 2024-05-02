@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class ConexionDB {
 	//pude bajar el codigo sin errores amen//
 	private String stringConexion = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
-	private String username = "biker";
-	private String password = "biker";
+	private String username = "STYLEBIKER";
+	private String password = "STYLEBIKER";
 	
 	
 	public Connection obtenerConexion() {

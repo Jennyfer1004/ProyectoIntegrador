@@ -1,4 +1,4 @@
-package presentacion.controladores.administrador;
+package logica.controladores.administrador;
 
 import java.io.IOException;
 

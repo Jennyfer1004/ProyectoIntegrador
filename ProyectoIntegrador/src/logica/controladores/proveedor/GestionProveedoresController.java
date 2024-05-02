@@ -1,4 +1,4 @@
-package presentacion.controladores.proveedor;
+package logica.controladores.proveedor;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

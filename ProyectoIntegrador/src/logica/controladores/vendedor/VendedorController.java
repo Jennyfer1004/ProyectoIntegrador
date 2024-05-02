@@ -1,4 +1,4 @@
-package presentacion.controladores.vendedor;
+package logica.controladores.vendedor;
 
 import java.io.IOException;
 

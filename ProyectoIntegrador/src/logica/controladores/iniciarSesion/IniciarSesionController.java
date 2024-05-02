@@ -1,4 +1,4 @@
-package presentacion.controladores.iniciarSesion;
+package logica.controladores.iniciarSesion;
 
 import datos.DAOS.UsuarioDAO;
 import datos.objetos.Usuarios;

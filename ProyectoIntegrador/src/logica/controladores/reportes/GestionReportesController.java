@@ -1,4 +1,4 @@
-package presentacion.controladores.ventas;
+package logica.controladores.reportes;
 
 import java.io.IOException;
 
@@ -13,16 +13,18 @@ import presentacion.vistas.administrador.AdministradorView;
 import presentacion.vistas.gerente.GerenteView;
 import presentacion.vistas.vendedor.VendedorView;
 
-public class GestionVentasController {
+public class GestionReportesController {
+
 	@FXML
     private Button botonVolverPrincipal;
+
 	
 	AdministradorView administradorView = new AdministradorView();
     GerenteView gerenteView = new GerenteView();
     VendedorView vendedorView = new VendedorView();
-
+    
     @FXML
-    void volverAprincipal(MouseEvent event) throws IOException {
+    void volverAPrincipal(MouseEvent event) throws IOException {
     	if (Usuarios.getRol().equals("administrador")) {
         	administradorView.show((Stage)botonVolverPrincipal.getScene().getWindow());
         }else if (Usuarios.getRol().equals("gerente")) {
@@ -42,7 +44,6 @@ public class GestionVentasController {
         alerta.setContentText(mensaje);
         alerta.showAndWait();
     }
-
 
 
 }

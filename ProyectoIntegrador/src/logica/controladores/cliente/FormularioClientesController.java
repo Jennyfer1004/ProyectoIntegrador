@@ -1,4 +1,4 @@
-package presentacion.controladores.cliente;
+package logica.controladores.cliente;
 
 import java.io.IOException;
 import java.net.URL;

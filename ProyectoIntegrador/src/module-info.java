@@ -7,36 +7,36 @@ module ProyectoIntegrador {
 
     opens application to javafx.graphics, javafx.fxml;
     
-    exports presentacion.controladores.administrador;
-    opens presentacion.controladores.administrador to javafx.fxml;
+    exports logica.controladores.administrador;
+    opens logica.controladores.administrador to javafx.fxml;
     
-    exports presentacion.controladores.cliente;
-    opens presentacion.controladores.cliente to javafx.fxml;
+    exports logica.controladores.cliente;
+    opens logica.controladores.cliente to javafx.fxml;
     
-    exports presentacion.controladores.gerente;
-    opens presentacion.controladores.gerente to javafx.fxml;
+    exports logica.controladores.gerente;
+    opens logica.controladores.gerente to javafx.fxml;
     
     
-    exports presentacion.controladores.iniciarSesion;
-    opens presentacion.controladores.iniciarSesion to javafx.fxml;
+    exports logica.controladores.iniciarSesion;
+    opens logica.controladores.iniciarSesion to javafx.fxml;
     
-    exports presentacion.controladores.proveedor;
-    opens presentacion.controladores.proveedor to javafx.fxml;
+    exports logica.controladores.proveedor;
+    opens logica.controladores.proveedor to javafx.fxml;
     
-    exports presentacion.controladores.producto;
-    opens presentacion.controladores.producto to javafx.fxml;
+    exports logica.controladores.producto;
+    opens logica.controladores.producto to javafx.fxml;
     
-    exports presentacion.controladores.reportes;
-    opens presentacion.controladores.reportes to javafx.fxml;
+    exports logica.controladores.reportes;
+    opens logica.controladores.reportes to javafx.fxml;
     
-    exports presentacion.controladores.usuarios;
-    opens presentacion.controladores.usuarios to javafx.fxml;
+    exports logica.controladores.usuarios;
+    opens logica.controladores.usuarios to javafx.fxml;
     
-    exports presentacion.controladores.vendedor;
-    opens presentacion.controladores.vendedor to javafx.fxml;
+    exports logica.controladores.vendedor;
+    opens logica.controladores.vendedor to javafx.fxml;
     
-    exports presentacion.controladores.ventas;
-    opens presentacion.controladores.ventas to javafx.fxml;
+    exports logica.controladores.ventas;
+    opens logica.controladores.ventas to javafx.fxml;
     
     opens datos.objetos to javafx.base;
     
