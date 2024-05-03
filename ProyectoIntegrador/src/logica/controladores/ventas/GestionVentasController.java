@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import presentacion.vistas.administrador.AdministradorView;
 import presentacion.vistas.gerente.GerenteView;
 import presentacion.vistas.vendedor.VendedorView;
+import presentacion.vistas.ventas.FormularioVentasView;
 
 public class GestionVentasController {
 	
@@ -86,9 +87,10 @@ public class GestionVentasController {
     void onCargarDatosClicked(MouseEvent event) {
 
     }
-
+    FormularioVentasView fvv = new FormularioVentasView();
     @FXML
-    void onCrearVentaClicked(MouseEvent event) {
+    void onCrearVentaClicked(MouseEvent event) throws IOException {
+    	fvv.show((Stage) crearVentaBoton.getScene().getWindow());
 
     }
 

@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentacion.vistas.administrador.AdministradorView;
 import presentacion.vistas.gerente.GerenteView;
+import presentacion.vistas.producto.FormularioProductosView;
 import presentacion.vistas.vendedor.VendedorView;
 
 public class GestionProductosController {
@@ -70,9 +71,10 @@ public class GestionProductosController {
     void onCargarDatosClicked(MouseEvent event) {
 
     }
-
+    FormularioProductosView fpv = new FormularioProductosView();
     @FXML
-    void onCrearProductoClicked(MouseEvent event) {
+    void onCrearProductoClicked(MouseEvent event) throws IOException {
+    	fpv.show((Stage) crearproductoBoton.getScene().getWindow());
 
     }
 

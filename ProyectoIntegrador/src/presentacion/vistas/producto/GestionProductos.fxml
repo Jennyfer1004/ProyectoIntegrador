@@ -67,7 +67,7 @@
          </font>
       </Label>
       <TextField fx:id="inputBuscar" layoutX="793.0" layoutY="184.0" promptText="Buscar" />
-      <Label layoutX="793.0" layoutY="209.0" text="Puede buscarlo por cedula o nombre completo" textFill="WHITE" />
+      <Label layoutX="793.0" layoutY="209.0" text="Puede buscarlo por codigo o nombre" textFill="WHITE" />
       <Button fx:id="buscarBoton" layoutX="961.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#onBuscarProductoClicked" text="Buscar" />
       <Button fx:id="cargarDatosBoton" layoutX="793.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#onCargarDatosClicked" text="Cargar todos los registros" />
       <Label layoutX="247.0" layoutY="43.0" text="GESTION DE PRODUCTOS" textFill="WHITE">

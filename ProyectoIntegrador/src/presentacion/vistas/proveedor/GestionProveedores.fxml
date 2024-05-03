@@ -34,11 +34,11 @@
                   <TableView fx:id="tabla" prefHeight="418.0" prefWidth="764.0" BorderPane.alignment="CENTER">
                      <columns>
                         <TableColumn fx:id="idColumna" prefWidth="146.0" text="ID" />
-                        <TableColumn fx:id="nombreEmpresaColumna" prefWidth="195.0" text="NOMBRE_EMPRESA" />
+                        <TableColumn fx:id="nombreEmpresaColumna" prefWidth="195.0" text="NOMBRE EMPRESA" />
                         <TableColumn fx:id="direccionColumna" minWidth="0.0" prefWidth="180.0" text="DIRECCION" />
                         <TableColumn fx:id="telefonoColumna" prefWidth="195.0" text="TELEFONO" />
                         <TableColumn fx:id="correoColumna" prefWidth="225.0" text="CORREO" />
-                        <TableColumn fx:id="productosSuministradosColumna" prefWidth="75.0" text="PRODUCTOS_SUMINISTRADOS" />
+                        <TableColumn fx:id="productosSuministradosColumna" prefWidth="75.0" text="PRODUCTOS SUMINISTRADOS" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
