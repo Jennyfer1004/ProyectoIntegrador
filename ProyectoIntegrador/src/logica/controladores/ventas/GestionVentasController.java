@@ -6,6 +6,9 @@ import datos.objetos.Usuarios;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -14,6 +17,37 @@ import presentacion.vistas.gerente.GerenteView;
 import presentacion.vistas.vendedor.VendedorView;
 
 public class GestionVentasController {
+	
+    @FXML
+    private Button buscarBoton;
+
+    @FXML
+    private TableColumn<?, ?> cantidaddeproductoscolumn;
+
+    @FXML
+    private Button cargarDatosBoton;
+
+    @FXML
+    private TableColumn<?, ?> codigocolumn;
+
+    @FXML
+    private Button crearVentaBoton;
+
+    @FXML
+    private Button eliminarVentaBoton;
+
+    @FXML
+    private TableColumn<?, ?> fecharealizadacolumn;
+
+    @FXML
+    private TextField inputBuscar;
+
+    @FXML
+    private TableView<?> tabla;
+
+    @FXML
+    private TableColumn<?, ?> valorporunidadcolumn;
+	
 	@FXML
     private Button botonVolverPrincipal;
 	
@@ -41,6 +75,31 @@ public class GestionVentasController {
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
         alerta.showAndWait();
+    }
+    
+    @FXML
+    void onBuscarClienteClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onCargarDatosClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onCrearVentaClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onEliminarVentaClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onGuardarCambiosClicked(MouseEvent event) {
+
     }
 
 

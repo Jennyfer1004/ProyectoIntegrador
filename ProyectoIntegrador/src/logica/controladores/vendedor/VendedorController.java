@@ -8,7 +8,9 @@ import javafx.scene.control.Button;
 
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import logica.controladores.producto.ConsultarProductosController;
 import presentacion.vistas.iniciarSesion.IniciarSesionView;
+import presentacion.vistas.producto.ConsultarProductosView;
 import presentacion.vistas.cliente.GestionClientesView;
 import presentacion.vistas.ventas.GestionVentasView;
 
@@ -28,6 +30,7 @@ public class VendedorController {
 	IniciarSesionView iniciarSesionView = new IniciarSesionView();
 	GestionClientesView gestionClientesView = new GestionClientesView();
 	GestionVentasView gestionVentasView = new GestionVentasView();
+	ConsultarProductosView cpv = new ConsultarProductosView();
 
 	@FXML
 	public void cerrarSesion(MouseEvent event) throws IOException {
@@ -35,9 +38,9 @@ public class VendedorController {
 	}
 	
 	@FXML
-    void irConsulProductos(MouseEvent event) {
-		
-
+    void irConsulProductos(MouseEvent event) throws IOException {
+		cpv.show((Stage) botonConsulProductos.getScene().getWindow());
+	
     }
 
     @FXML

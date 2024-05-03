@@ -12,7 +12,7 @@ import presentacion.vistas.iniciarSesion.IniciarSesionView;
 import presentacion.vistas.cliente.GestionClientesView;
 import presentacion.vistas.producto.GestionProductosView;
 import presentacion.vistas.proveedor.GestionProveedoresView;
-import presentacion.vistas.reportes.GestionReportesView;
+import presentacion.vistas.reportes.ConsultarReportesView;
 import presentacion.vistas.usuarios.GestionUsuariosView;
 import presentacion.vistas.vendedor.GestionVendedoresView;
 import presentacion.vistas.ventas.GestionVentasView;
@@ -38,7 +38,7 @@ public class AdministradorController {
 	GestionClientesView gestionClientesView = new GestionClientesView();
 	GestionProveedoresView gestionProveedoresView = new GestionProveedoresView();
 	GestionVentasView gestionVentasView = new GestionVentasView();
-	GestionReportesView gestionReportesView = new GestionReportesView();
+	ConsultarReportesView gestionReportesView = new ConsultarReportesView();
 	GestionUsuariosView gestionUsuariosView = new GestionUsuariosView();
 	GestionVendedoresView  gestionVendedoresView = new GestionVendedoresView();
 

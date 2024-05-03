@@ -6,6 +6,9 @@ import datos.objetos.Usuarios;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -16,12 +19,74 @@ import presentacion.vistas.vendedor.VendedorView;
 public class GestionProductosController {
 	
     @FXML
+    private TableColumn<?, ?> CANTIDADENESTOCKCOLUMN;
+
+    @FXML
+    private TableColumn<?, ?> CODIGOCOLUMN;
+
+    @FXML
+    private TableColumn<?, ?> DESCRIPCIONCOLUMN;
+
+    @FXML
+    private Button Eliminarprodutobtn;
+
+    @FXML
+    private TableColumn<?, ?> NOMBRECOLUMN;
+    
+    @FXML
     private Button botonVolverPrincipal;
     
+    
+
+    
+    @FXML
+    private Button buscarBoton;
+
+    @FXML
+    private Button cargarDatosBoton;
+
+    @FXML
+    private Button crearproductoBoton;
+
+    @FXML
+    private TextField inputBuscar;
+
+    @FXML
+    private TableView<?> tabla;
+
+    @FXML
+    private TableColumn<?, ?> telefonoColumna;
     
     AdministradorView administradorView = new AdministradorView();
     GerenteView gerenteView = new GerenteView();
     VendedorView vendedorView = new VendedorView();
+
+    @FXML
+    void onBuscarProductoClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onCargarDatosClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onCrearProductoClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onEliminarProductoClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onGuardarCambiosClicked(MouseEvent event) {
+
+    }
+	
+    
 
     @FXML
     void volverAprincipal(MouseEvent event) throws IOException {
