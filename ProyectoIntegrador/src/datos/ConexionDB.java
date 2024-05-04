@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionDB {
-	//pude bajar el codigo sin errores amen//
+	// string de conexion a la base de datos stylebiker
 	private String stringConexion = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
 	private String username = "STYLEBIKER";
 	private String password = "STYLEBIKER";
 	
-	
+	//metodo para obtener la conexion a la base de datos
 	public Connection obtenerConexion() {
 		Connection conn = null;
 		try {

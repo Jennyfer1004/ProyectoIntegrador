@@ -98,7 +98,7 @@ public class FormularioClientesController implements Initializable{
         	mostrarAlerta("Inicio de Sesión Fallido", "Credenciales incorrectas para " ,AlertType.ERROR);
         }
     }
-    
+    //metodo que muestra una alerta en pantalla
     private void mostrarAlerta(String titulo, String mensaje, AlertType tipo) {
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);

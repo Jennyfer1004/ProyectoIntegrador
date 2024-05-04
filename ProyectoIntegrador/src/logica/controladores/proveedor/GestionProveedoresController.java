@@ -113,7 +113,6 @@ public class GestionProveedoresController implements Initializable{
 	    void onEliminarProveedorClicked(MouseEvent event) {
 	        Proveedor  proveedorSeleccionado= tabla.getSelectionModel().getSelectedItem();
 	        if (proveedorSeleccionado != null) {
-	        	//System.out.println(clienteSeleccionado.getCedula());
 	            boolean eliminado = proveedorService.eliminarProveedor(proveedorSeleccionado);
 	            if (eliminado) {
 
@@ -132,8 +131,6 @@ public class GestionProveedoresController implements Initializable{
 	    	  Proveedor proveedorSeleccionado = tabla.getSelectionModel().getSelectedItem();
 	          if (proveedorSeleccionado != null) {
 	          	if (proveedorSeleccionado.isEditado()) {
-	          		//boolean actualizado = true;
-	          		//System.out.println(clienteSeleccionado.getCedula()+clienteSeleccionado.getNombreCompleto()+clienteSeleccionado.getCorreo()+clienteSeleccionado.getDireccion());
 	          		boolean actualizado = proveedorService.editarProveedor(proveedorSeleccionado);
 	          	
 	          		if (actualizado) {
