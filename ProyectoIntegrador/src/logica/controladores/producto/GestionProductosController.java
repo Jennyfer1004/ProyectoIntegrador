@@ -22,8 +22,6 @@ public class GestionProductosController {
     @FXML
     private TableColumn<?, ?> CANTIDADENESTOCKCOLUMN;
 
-    @FXML
-    private TableColumn<?, ?> CODIGOCOLUMN;
 
     @FXML
     private TableColumn<?, ?> DESCRIPCIONCOLUMN;

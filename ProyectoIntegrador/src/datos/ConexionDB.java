@@ -25,4 +25,16 @@ public class ConexionDB {
 		
 	}
 	
+	
+	public void cerrarConexion(Connection conn) {
+	    if (conn != null) {
+	        try {
+	            conn.close();
+	        } catch (SQLException e) {
+	        	// TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	    }
+	}
+	
 }

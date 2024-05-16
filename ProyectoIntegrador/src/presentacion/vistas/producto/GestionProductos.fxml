@@ -36,7 +36,6 @@
          <center>
             <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="CODIGOCOLUMN" prefWidth="146.0" text="CODIGO" />
                 <TableColumn fx:id="NOMBRECOLUMN" prefWidth="195.0" text="NOMBRE" />
                   <TableColumn fx:id="DESCRIPCIONCOLUMN" minWidth="0.0" prefWidth="180.0" text="DESCRIPCION" />
                   <TableColumn fx:id="telefonoColumna" prefWidth="195.0" text="VALOR COMPRA" />

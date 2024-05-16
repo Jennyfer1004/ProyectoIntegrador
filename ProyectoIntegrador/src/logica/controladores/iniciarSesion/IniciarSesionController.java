@@ -1,6 +1,6 @@
 package logica.controladores.iniciarSesion;
 
-import datos.DAOS.UsuarioDAO;
+import datos.DAOS.Login;
 import datos.objetos.Usuarios;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -72,7 +72,7 @@ public class IniciarSesionController {
         GerenteView gerenteView = new GerenteView();
         VendedorView vendedorView = new VendedorView();
 
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Login usuarioDAO = new Login();
         
         try {
             boolean credencialesValidas = usuarioDAO.validarCredenciales(usuario, contrasena, tipoUsuario);
