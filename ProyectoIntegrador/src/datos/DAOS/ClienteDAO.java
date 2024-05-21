@@ -18,13 +18,13 @@ public class ClienteDAO {
      * Obtiene todos los datos de los clientes almacenados en la base de datos.
      * @return Una lista enlazada de objetos Cliente que contiene todos los datos de los clientes.
      */
-    public LinkedList<Cliente> getDatos(){ 
+    public LinkedList<Cliente> getDatos(String tipoUsuario){ 
         LinkedList<Cliente> clienteDatos = new LinkedList<>();
         ConexionDB conn = new ConexionDB();
         
-        try(Connection connection = conn.obtenerConexion();
+        try(Connection connection = conn.obtenerConexionUsuario(tipoUsuario);
             Statement st = connection.createStatement();
-            ResultSet result = st.executeQuery("SELECT * FROM cliente")) {
+            ResultSet result = st.executeQuery("SELECT * FROM stylebiker.cliente")) {
             while(result.next()) {
                   Cliente c = new Cliente(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5));
                   clienteDatos.add(c);

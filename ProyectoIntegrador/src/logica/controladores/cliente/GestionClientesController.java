@@ -78,12 +78,13 @@ public class GestionClientesController implements Initializable{
     @FXML
     private TextField inputBuscar;
    	
-   	//private ClienteDAO clienteDAO;
+   	private ClienteDAO clienteDAO;
    	
    	private ClienteService clienteService;
 
     @FXML
     void onCargarDatosClicked(MouseEvent event) {
+    	
     	this.tabla.getItems().clear();
         this.tabla.setItems(this.clienteService.getClientes());
 

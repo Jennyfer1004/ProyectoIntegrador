@@ -26,16 +26,15 @@ public class Login {
      * @return true si las credenciales son válidas, false si son incorrectas.
      * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
      */
-    public boolean validarCredenciales(String usuario, String contrasena, String tipoUsuario) throws SQLException {
+    public boolean validarCredenciales(String usuario, String contrasena) throws SQLException {
         Connection conn = null;
     	PreparedStatement ps = null;
         ResultSet rs = null;
         try {
         	conn = this.conexionDb.obtenerConexion();
-            ps = conn.prepareStatement("SELECT * FROM usuario WHERE usuario_dado = ? AND contrasena = ? AND rol = ?");
+            ps = conn.prepareStatement("SELECT * FROM usuario WHERE usuario_dado = ? AND contrasena = ?");
             ps.setString(1, usuario);
             ps.setString(2, contrasena);
-            ps.setString(3, tipoUsuario);
             rs = ps.executeQuery();
             return rs.next();
           }finally {
@@ -51,5 +50,11 @@ public class Login {
             }
             
         }
-    }       
+    }
+    
+    public Connection obtenerConexionUsuario(String tipoUsuario) {
+        return this.conexionDb.obtenerConexionUsuario(tipoUsuario);
+    }
+   
+    
 }

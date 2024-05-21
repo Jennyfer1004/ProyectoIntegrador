@@ -10,8 +10,12 @@ public class ConexionDB {
 	private String username = "STYLEBIKER";
 	private String password = "STYLEBIKER";
 	
-	//metodo para obtener la conexion a la base de datos
 	public Connection obtenerConexion() {
+        return obtenerConexion(this.username, this.password);
+    }
+	
+	//metodo para obtener la conexion a la base de datos
+	public Connection obtenerConexion(String username, String password) {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(this.stringConexion, this.username, this.password);
@@ -24,6 +28,19 @@ public class ConexionDB {
 		return conn;
 		
 	}
+	
+	public Connection obtenerConexionUsuario(String tipoUsuario) {
+        switch (tipoUsuario) {
+            case "administrador":
+                return obtenerConexion("admint", "admint");
+            case "gerente":
+                return obtenerConexion("manager", "manager");
+            case "vendedor":
+                return obtenerConexion("seller", "seller");
+            default:
+                throw new IllegalArgumentException("Tipo de usuario no válido: " + tipoUsuario);
+        }
+    }
 	
 	
 	public void cerrarConexion(Connection conn) {

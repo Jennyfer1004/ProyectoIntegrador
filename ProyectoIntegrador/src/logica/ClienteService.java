@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import datos.DAOS.ClienteDAO;
 import datos.objetos.Cliente;
+import datos.objetos.Usuarios;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -24,7 +25,10 @@ public class ClienteService {
      * @return Una lista observable de clientes.
      */
     public ObservableList<Cliente> getClientes() {
-        LinkedList<Cliente> data1 = clienteDAO.getDatos();
+    	
+    	//String tipoUsuario = "administrador"; // o cualquier otro tipo de usuario que desees obtener
+    	String tipoUsuario = Usuarios.getRol();
+    	LinkedList<Cliente> data1 = clienteDAO.getDatos(tipoUsuario);
         for(Cliente c: data1) {
             this.clientes.add(c);
         }
