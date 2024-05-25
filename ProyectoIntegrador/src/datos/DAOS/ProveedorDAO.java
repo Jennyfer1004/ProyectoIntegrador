@@ -22,7 +22,7 @@ public class ProveedorDAO {
     public LinkedList<Proveedor> getDatos(){
         LinkedList<Proveedor> proveedorDatos = new LinkedList<>();
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         if (connection != null) {
             try {
                 Statement st = connection.createStatement();
@@ -61,7 +61,7 @@ public class ProveedorDAO {
     public boolean registrarProveedor(String id, String nombreEmpresa, String direccion, String telefono, String correo,String productosSuministrados){
 
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         if (connection != null) {
             try {
                 String query = "INSERT INTO proveedor (ID, NOMBRE_EMPRESA , DIRECCION , TELEFONO , CORREO , PRODUCTOS_SUMINISTRADOS ) VALUES (?,?,?,?,?,?) ";
@@ -96,7 +96,7 @@ public class ProveedorDAO {
      */
     public boolean eliminarProveedor(String id) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         if (connection != null) {
             try {
                 String query = "DELETE FROM proveedor WHERE id = ?";
@@ -127,7 +127,7 @@ public class ProveedorDAO {
      */
     public boolean editarProveedor(Proveedor proveedor) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         if (connection != null) {
             try {
                 String query = "UPDATE proveedor SET NOMBRE_EMPRESA = ?, DIRECCION = ?, TELEFONO = ?,CORREO = ?, PRODUCTOS_SUMINISTRADOS = ? WHERE id = ?";
@@ -163,7 +163,7 @@ public class ProveedorDAO {
      */
     public LinkedList<Proveedor> getBuscarProveedor(String parametro) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         LinkedList<Proveedor> proveedoresEncontrados = new LinkedList<>();
         
         if (connection != null) {

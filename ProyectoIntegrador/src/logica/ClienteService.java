@@ -28,7 +28,7 @@ public class ClienteService {
     	
     	//String tipoUsuario = "administrador"; // o cualquier otro tipo de usuario que desees obtener
     	String tipoUsuario = Usuarios.getRol();
-    	LinkedList<Cliente> data1 = clienteDAO.getDatos(tipoUsuario);
+    	LinkedList<Cliente> data1 = clienteDAO.getDatos();
         for(Cliente c: data1) {
             this.clientes.add(c);
         }
@@ -43,8 +43,8 @@ public class ClienteService {
      * @param telefono Teléfono del cliente.
      * @param direccion Dirección del cliente.
      */
-    public void agregarCliente(String cedula, String nombreCompleto, String correo, String telefono, String direccion) {
-        Cliente nuevoCliente = new Cliente(cedula, nombreCompleto, correo, telefono, direccion);
+    public void agregarCliente(String cedula, String nombreCompleto, String correo, String telefono, String direccion, String estado) {
+        Cliente nuevoCliente = new Cliente(cedula, nombreCompleto, correo, telefono, direccion, estado);
         this.clientes.add(nuevoCliente);
     }
     

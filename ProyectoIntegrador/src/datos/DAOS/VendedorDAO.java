@@ -21,7 +21,7 @@ public class VendedorDAO {
     public LinkedList<Vendedor> getDatos(){
         LinkedList<Vendedor> vendedorDatos = new LinkedList<>();
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         if (connection != null) {
             try {
                 Statement st = connection.createStatement();
@@ -59,7 +59,7 @@ public class VendedorDAO {
     public boolean registrarVendedor(String cedula, String nombreCompleto, String correo, String telefono, String direccion){
 
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         if (connection != null) {
             try {
                 String query = "INSERT INTO empleado (cedula, nombre_completo, correo, telefono, direccion) VALUES (?,?,?,?,?) ";
@@ -93,7 +93,7 @@ public class VendedorDAO {
      */
     public boolean eliminarVendedor(String cedula) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         if (connection != null) {
             try {
                 String query = "DELETE FROM empleado WHERE cedula = ?";
@@ -124,7 +124,7 @@ public class VendedorDAO {
      */
     public boolean editarVendedor(Vendedor vendedor) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         if (connection != null) {
             try {
                 String query = "UPDATE empleado SET nombre_completo = ?, correo = ?, direccion = ? WHERE cedula = ?";
@@ -157,7 +157,7 @@ public class VendedorDAO {
      */
     public LinkedList<Vendedor> getBuscarVendedor(String parametro) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexion();
+        Connection connection = conn.obtenerConexionAdmin();
         LinkedList<Vendedor> vendedoresEncontrados = new LinkedList<>();
         
         if (connection != null) {

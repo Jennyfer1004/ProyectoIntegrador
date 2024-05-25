@@ -6,14 +6,16 @@ public class Cliente {
     private String correo;
     private String telefono;
     private String direccion;
+    private String estado;
     private boolean editado;
 
-    public Cliente(String cedula, String nombreCompleto, String correo, String telefono, String direccion) {
+    public Cliente(String cedula, String nombreCompleto, String correo, String telefono, String direccion, String estado) {
         this.cedula = cedula;
         this.nombreCompleto = nombreCompleto;
         this.correo = correo;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.estado = estado;
         this.editado = false; // Inicialmente el cliente no ha sido editado
     }
     public String getCedula() {
@@ -24,6 +26,12 @@ public class Cliente {
 	}
 	public String getNombreCompleto() {
 		return nombreCompleto;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public void setNombreCompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;

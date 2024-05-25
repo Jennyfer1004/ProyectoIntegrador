@@ -62,6 +62,9 @@ public class FormularioClientesController implements Initializable{
     @FXML
     private TextField inputTelefono;
     
+    @FXML
+    private TextField inputEstado;
+    
     private ClienteService clienteService;
     
     private ClienteDAO clienteDAO;
@@ -69,19 +72,30 @@ public class FormularioClientesController implements Initializable{
     GestionClientesView gcv = new GestionClientesView();
 
     @FXML
-    void onRegistrarCliente(MouseEvent event) {
+    void onRegistrarCliente(MouseEvent event) throws IOException {
     	
     	String cedula = inputCedula.getText();
     	String nombreCompleto = inputNomCompleto.getText();
     	String correo = inputCorreo.getText();
     	String telefono = inputTelefono.getText();
     	String direccion = inputDireccion.getText();
-    	
-    	boolean insercionExitosa = clienteDAO.registrarCliente(cedula, nombreCompleto, correo, telefono, direccion);
+    	String estado = inputEstado.getText();
+    	boolean insercionExitosa = clienteDAO.registrarCliente(cedula, nombreCompleto, correo, telefono, direccion, estado);
         
         // Si la inserción fue exitosa, agregar el cliente a la lista observable
         if (insercionExitosa) {
-            clienteService.agregarCliente(cedula, nombreCompleto, correo, telefono, direccion);
+        	mostrarAlerta("CONFIRMACION", "Se creo el cliente correctamente" ,AlertType.CONFIRMATION);
+            clienteService.agregarCliente(cedula, nombreCompleto, correo, telefono, direccion, estado);
+            if (Usuarios.getRol().equals("administrador")) {
+            	gcv.show((Stage)botonVolverPrincipal.getScene().getWindow());
+            }else if (Usuarios.getRol().equals("vendedor")) {
+            	gcv.show((Stage)botonVolverPrincipal.getScene().getWindow());
+            }else{
+            	mostrarAlerta("Inicio de Sesión Fallido", "Credenciales incorrectas para " ,AlertType.ERROR);
+            } 
+        }
+        else {
+        	mostrarAlerta("Registro fallido", "No se pudo crear, verifica los campos " ,AlertType.ERROR);
         }
     	
 

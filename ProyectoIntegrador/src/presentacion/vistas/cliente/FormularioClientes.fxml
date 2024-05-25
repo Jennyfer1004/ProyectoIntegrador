@@ -9,13 +9,12 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="492.0" style="-fx-background-color: #171A34;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logica.controladores.cliente.FormularioClientesController">
    <children>
       
-      <Button fx:id="botonVolverPrincipal" layoutX="29.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#volverAprincipal" style="-fx-background-color: WHITE;" text="VOLVER">
+      <Button fx:id="botonVolverPrincipal" layoutX="28.0" layoutY="454.0" mnemonicParsing="false" onMouseClicked="#volverAprincipal" style="-fx-background-color: WHITE;" text="VOLVER">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="botonCancelar" layoutX="141.0" layoutY="378.0" mnemonicParsing="false" text="CANCELAR" />
-      <Button fx:id="botonRegistrar" layoutX="322.0" layoutY="378.0" mnemonicParsing="false" onMouseClicked="#onRegistrarCliente" text="REGISTRAR" />
+      <Button fx:id="botonRegistrar" layoutX="189.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#onRegistrarCliente" prefHeight="34.0" prefWidth="114.0" text="REGISTRAR" />
       <TextField fx:id="inputCedula" layoutX="273.0" layoutY="97.0" />
       <TextField fx:id="inputNomCompleto" layoutX="273.0" layoutY="154.0" />
       <TextField fx:id="inputCorreo" layoutX="273.0" layoutY="209.0" />
@@ -31,6 +30,8 @@
             <Font name="Bodoni MT Black" size="24.0" />
          </font>
       </Label>
+      <Label layoutX="83.0" layoutY="371.0" text="ESTADO" textFill="WHITE" />
+      <TextField fx:id="inputEstado" layoutX="273.0" layoutY="367.0" />
       
    </children>
 </AnchorPane>

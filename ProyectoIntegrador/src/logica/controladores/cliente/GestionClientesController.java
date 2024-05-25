@@ -54,6 +54,9 @@ public class GestionClientesController implements Initializable{
     private TableColumn<Cliente, String> direccionColumna;
     
     @FXML
+    private TableColumn<Cliente, String> estadoColumna;
+    
+    @FXML
     private TableView<Cliente> tabla;    
     
     
@@ -188,6 +191,7 @@ public class GestionClientesController implements Initializable{
         correoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         telefonoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         direccionColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+        estadoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         
         // Asignar los valores de las celdas a las propiedades del objeto Cliente
         cedulaColumna.setCellValueFactory(new PropertyValueFactory<>("cedula"));
@@ -195,6 +199,7 @@ public class GestionClientesController implements Initializable{
         correoColumna.setCellValueFactory(new PropertyValueFactory<>("correo"));
         telefonoColumna.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         direccionColumna.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+        estadoColumna.setCellValueFactory(new PropertyValueFactory<>("estado"));
 
         // Agregar manejadores para la edición de celdas
         cedulaColumna.setOnEditCommit(event -> {
@@ -220,6 +225,11 @@ public class GestionClientesController implements Initializable{
         direccionColumna.setOnEditCommit(event -> {
             Cliente cliente = event.getRowValue();
             cliente.setDireccion(event.getNewValue());
+            cliente.setEditado(true);
+        });
+        estadoColumna.setOnEditCommit(event -> {
+            Cliente cliente = event.getRowValue();
+            cliente.setEstado(event.getNewValue());
             cliente.setEditado(true);
         });
         

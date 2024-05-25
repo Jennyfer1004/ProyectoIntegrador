@@ -77,13 +77,12 @@ public class IniciarSesionController {
         }
         
         try {
-            boolean credencialesValidas = login.validarCredenciales(usuario, contrasena);
+            boolean credencialesValidas = login.validarCredenciales(usuario, contrasena, tipoUsuario);
             if (credencialesValidas) {
                 Usuarios.inicializar(usuario, contrasena, tipoUsuario);
                 if (currentConnection != null) {
                     conexion.cerrarConexion(currentConnection);
                 }
-                currentConnection = login.obtenerConexionUsuario(tipoUsuario);
                 System.out.println("Inicio de sesión exitoso con el usuario de tipo: " + tipoUsuario);
                 cargarVistaUsuario(tipoUsuario);
             } else {
