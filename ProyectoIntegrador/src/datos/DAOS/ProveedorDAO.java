@@ -26,10 +26,10 @@ public class ProveedorDAO {
         if (connection != null) {
             try {
                 Statement st = connection.createStatement();
-                String query = "select * from proveedor";
+                String query = "select * from stylebiker.proveedor";
                 ResultSet result = st.executeQuery(query);
                 while(result.next()) {
-                    Proveedor p = new Proveedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+                    Proveedor p = new Proveedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7));
                     proveedorDatos.add(p);
                     
                 }
@@ -175,7 +175,7 @@ public class ProveedorDAO {
                     ResultSet result = preparedStatement.executeQuery();
                     
                     while (result.next()) {
-                        Proveedor proveedor =  new Proveedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6));
+                        Proveedor proveedor =  new Proveedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7));
                         proveedoresEncontrados.add(proveedor);
                     }
             } catch (Exception e) {

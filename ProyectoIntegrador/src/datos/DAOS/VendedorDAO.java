@@ -25,7 +25,7 @@ public class VendedorDAO {
         if (connection != null) {
             try {
                 Statement st = connection.createStatement();
-                String query = "select * from empleado";
+                String query = "select * from stylebiker.empleado";
                 ResultSet result = st.executeQuery(query);
                 while(result.next()) {
                     Vendedor c = new Vendedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5));

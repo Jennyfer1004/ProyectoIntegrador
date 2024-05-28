@@ -7,9 +7,10 @@ public class Proveedor {
     private String telefono;
     private String correo;
     private String productosSuministrados;
+    private String estado;
     private boolean editado;
 
-	public Proveedor(String id, String nombreEmpresa, String direccion, String telefono, String correo, String productosSuministrados) {
+	public Proveedor(String id, String nombreEmpresa, String direccion, String telefono, String correo, String productosSuministrados, String estado) {
 		// TODO Auto-generated constructor stub
 		this.id = id;
         this.nombreEmpresa = nombreEmpresa;
@@ -17,6 +18,7 @@ public class Proveedor {
         this.telefono = telefono;
         this.correo = correo;
         this.productosSuministrados = productosSuministrados;
+        this.estado = estado;
         this.editado = false; // Inicialmente el proveedor no ha sido editado
 	}
 
@@ -68,6 +70,14 @@ public class Proveedor {
 		this.productosSuministrados = productosSuministrados;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
 	public boolean isEditado() {
 		return editado;
 	}
@@ -75,7 +85,6 @@ public class Proveedor {
 	public void setEditado(boolean editado) {
 		this.editado = editado;
 	}
-
 
 	
     

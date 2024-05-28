@@ -60,13 +60,13 @@ public class FormularioProveedorController implements Initializable {
     	String telefono = inputTelefono.getText();
     	String correo = inputCorreo.getText();
     	String productosSuministrados = inputProductosSuministrados.getText();
-    	
+    	String estado = "activo";
     	
     	boolean insercionExitosa = proveedorDAO.registrarProveedor(id, nombreEmpresa, direccion, telefono, correo, productosSuministrados);
         
         // Si la inserción fue exitosa, agregar el Proveedor a la lista observable
         if (insercionExitosa) {
-        	proveedorService.agregarProveedor(id, nombreEmpresa, direccion, telefono, correo, productosSuministrados);
+        	proveedorService.agregarProveedor(id, nombreEmpresa, direccion, telefono, correo, productosSuministrados,estado);
         }
     	
 	}

@@ -39,8 +39,8 @@ public class ProveedorService {
      * @param correo Correo electrónico del proveedor.
      * @param productosSuministrados Productos suministrados por el proveedor.
      */
-    public void agregarProveedor(String id, String nombreEmpresa, String direccion, String telefono, String correo, String productosSuministrados) {
-        Proveedor nuevoProveedor = new Proveedor(id, nombreEmpresa, direccion, telefono, correo, productosSuministrados);
+    public void agregarProveedor(String id, String nombreEmpresa, String direccion, String telefono, String correo, String productosSuministrados,String estado) {
+        Proveedor nuevoProveedor = new Proveedor(id, nombreEmpresa, direccion, telefono, correo, productosSuministrados,estado);
         this.proveedores.add(nuevoProveedor);
     }
 
