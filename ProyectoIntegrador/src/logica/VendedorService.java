@@ -38,8 +38,8 @@ public class VendedorService {
      * @param telefono Teléfono del vendedor.
      * @param direccion Dirección del vendedor.
      */
-    public void agregarVendedor(String cedula, String nombreCompleto, String correo, String telefono, String direccion) {
-        Vendedor nuevoVendedor = new Vendedor(cedula, nombreCompleto, correo, telefono, direccion);
+    public void agregarVendedor(String cedula, String nombreCompleto, String direccion, String correo, String telefono,  String estado) {
+        Vendedor nuevoVendedor = new Vendedor(cedula, nombreCompleto,  direccion, correo, telefono, estado);
         this.vendedores.add(nuevoVendedor);
     }
 

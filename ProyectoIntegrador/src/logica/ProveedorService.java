@@ -39,8 +39,8 @@ public class ProveedorService {
      * @param correo Correo electrónico del proveedor.
      * @param productosSuministrados Productos suministrados por el proveedor.
      */
-    public void agregarProveedor(String id, String nombreEmpresa, String direccion, String telefono, String correo, String productosSuministrados,String estado) {
-        Proveedor nuevoProveedor = new Proveedor(id, nombreEmpresa, direccion, telefono, correo, productosSuministrados,estado);
+    public void agregarProveedor(String nombreEmpresa, String direccion, String telefono, String correo, String productosSuministrados, String estado) {
+        Proveedor nuevoProveedor = new Proveedor(nombreEmpresa, direccion, telefono, correo, productosSuministrados, estado);
         this.proveedores.add(nuevoProveedor);
     }
 
@@ -49,9 +49,9 @@ public class ProveedorService {
      * @param proveedor Proveedor a eliminar.
      * @return true si se eliminó correctamente, false de lo contrario.
      */
-    public boolean eliminarProveedor(Proveedor proveedor) {
-        return proveedorDAO.eliminarProveedor(proveedor.getId());
-    }
+    //public boolean eliminarProveedor(Proveedor proveedor) {
+//       return proveedorDAO.eliminarProveedor(proveedor.getId());
+    //
 
     /**
      * Edita un proveedor.

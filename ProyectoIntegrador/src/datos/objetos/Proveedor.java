@@ -1,7 +1,6 @@
 package datos.objetos;
 
 public class Proveedor {
-	private String id;
     private String nombreEmpresa;
     private String direccion;
     private String telefono;
@@ -10,9 +9,8 @@ public class Proveedor {
     private String estado;
     private boolean editado;
 
-	public Proveedor(String id, String nombreEmpresa, String direccion, String telefono, String correo, String productosSuministrados, String estado) {
+	public Proveedor(String nombreEmpresa, String direccion, String telefono, String correo, String productosSuministrados, String estado) {
 		// TODO Auto-generated constructor stub
-		this.id = id;
         this.nombreEmpresa = nombreEmpresa;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -22,13 +20,7 @@ public class Proveedor {
         this.editado = false; // Inicialmente el proveedor no ha sido editado
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 
 	public String getNombreEmpresa() {
 		return nombreEmpresa;

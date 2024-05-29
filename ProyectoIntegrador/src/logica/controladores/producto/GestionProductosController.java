@@ -19,18 +19,30 @@ import presentacion.vistas.vendedor.VendedorView;
 
 public class GestionProductosController {
 	
+    
     @FXML
-    private TableColumn<?, ?> CANTIDADENESTOCKCOLUMN;
-
+    private TableColumn<?, ?> nombreColumna;
 
     @FXML
-    private TableColumn<?, ?> DESCRIPCIONCOLUMN;
-
+    private TableColumn<?, ?> descripcionColumna;
+    
+    @FXML
+    private TableColumn<?, ?> valorColumna;
+   
+    @FXML
+    private TableColumn<?, ?> cantidadStockColumna;
+    
+    @FXML
+    private TableColumn<?, ?> estadoColumna;
+    
+    @FXML
+    private TableColumn<?, ?> proveedorColumna;
+    
+    
     @FXML
     private Button Eliminarprodutobtn;
 
-    @FXML
-    private TableColumn<?, ?> NOMBRECOLUMN;
+    
     
     @FXML
     private Button botonVolverPrincipal;

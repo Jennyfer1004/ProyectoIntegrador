@@ -4,19 +4,31 @@ public class Vendedor {
 	
 	private String cedula;
     private String nombreCompleto;
+    private String direccion;
     private String correo;
     private String telefono;
-    private String direccion;
-    private boolean editado;
+    private String estado;
+    
 
-    public Vendedor(String cedula, String nombreCompleto, String correo, String telefono, String direccion) {
+	private boolean editado;
+
+    public Vendedor(String cedula, String nombreCompleto, String correo, String telefono, String direccion, String estado) {
         this.cedula = cedula;
         this.nombreCompleto = nombreCompleto;
+        this.direccion = direccion;
         this.correo = correo;
         this.telefono = telefono;
-        this.direccion = direccion;
+        this.estado = estado;
         this.editado = false; // Inicialmente el cliente no ha sido editado
     }
+    
+    public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
     public String getCedula() {
 		return cedula;
 	}

@@ -1,5 +1,6 @@
 package datos.DAOS;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +30,7 @@ public class ProveedorDAO {
                 String query = "select * from stylebiker.proveedor";
                 ResultSet result = st.executeQuery(query);
                 while(result.next()) {
-                    Proveedor p = new Proveedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7));
+                    Proveedor p = new Proveedor(result.getString(2),result.getString(3),result.getString(4), result.getString(5), result.getString(6), result.getString(7));
                     proveedorDatos.add(p);
                     
                 }
@@ -58,33 +59,33 @@ public class ProveedorDAO {
      * @param productosSuministrados Productos suministrados por el proveedor.
      * @return true si el proveedor se registró correctamente, false de lo contrario.
      */
-    public boolean registrarProveedor(String id, String nombreEmpresa, String direccion, String telefono, String correo,String productosSuministrados){
+    public boolean registrarProveedor(String nombreEmpresa, String direccion, String telefono, String correo,String productosSuministrados, String estado){
 
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexionAdmin();
-        if (connection != null) {
-            try {
-                String query = "INSERT INTO proveedor (ID, NOMBRE_EMPRESA , DIRECCION , TELEFONO , CORREO , PRODUCTOS_SUMINISTRADOS ) VALUES (?,?,?,?,?,?) ";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, id);
-                preparedStatement.setString(2, nombreEmpresa);
-                preparedStatement.setString(3, direccion);
-                preparedStatement.setString(4, telefono);
-                preparedStatement.setString(5, correo);
-                preparedStatement.setString(6, productosSuministrados);
-                int filasInsertadas = preparedStatement.executeUpdate();
-                return filasInsertadas > 0;
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    connection.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return false;
+        try (Connection connection = conn.obtenerConexionAdmin();
+                CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.ins_proveedor(?, ?, ?, ?, ?, ?) }")) {
+
+               callableStatement.setString(1, nombreEmpresa);
+               callableStatement.setString(2, direccion);
+               callableStatement.setString(3, telefono);
+               callableStatement.setString(4, correo);
+               callableStatement.setString(5, productosSuministrados);
+               callableStatement.setString(6, estado);
+
+               callableStatement.execute();
+
+               // No hay advertencias, pero verifica si se lanzó una excepción
+               System.out.println("realizado");
+               return true; // Si no hubo excepciones, asume que se realizó correctamente
+           } catch (SQLException e) {
+               if (e.getErrorCode() == 1) { // 1 es el código de error para violación de clave única
+                   System.err.println("Error: El codigo ya existe.");
+               } else {
+               	System.err.println("Error de SQL: " + e.getMessage());
+                   e.printStackTrace();
+               }
+               return false;
+           }
     }
     
     //---------------------ELIMINAR UN PROVEEDOR----------------------//
@@ -127,32 +128,24 @@ public class ProveedorDAO {
      */
     public boolean editarProveedor(Proveedor proveedor) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexionAdmin();
-        if (connection != null) {
-            try {
-                String query = "UPDATE proveedor SET NOMBRE_EMPRESA = ?, DIRECCION = ?, TELEFONO = ?,CORREO = ?, PRODUCTOS_SUMINISTRADOS = ? WHERE id = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, proveedor.getNombreEmpresa());
-                preparedStatement.setString(2, proveedor.getDireccion());
-                preparedStatement.setString(3, proveedor.getTelefono());
-                preparedStatement.setString(4, proveedor.getCorreo());
-                preparedStatement.setString(5, proveedor.getProductosSuministrados());
-                preparedStatement.setString(6, proveedor.getId());
-                
-                
-                int filasModificadas = preparedStatement.executeUpdate();
-                return filasModificadas > 0;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return false;
+        try (Connection connection = conn.obtenerConexionAdmin();
+        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.MOD_PROVEEDOR(?, ?, ?, ?, ?) }")) {
+
+            callableStatement.setString(1, proveedor.getNombreEmpresa());
+            callableStatement.setString(2, proveedor.getDireccion());
+            callableStatement.setString(3, proveedor.getTelefono());
+            callableStatement.setString(4, proveedor.getCorreo());
+            callableStatement.setString(5, proveedor.getProductosSuministrados());
+
+            callableStatement.execute();
+
+            // No hay advertencias, pero verifica si se lanzó una excepción
+            System.out.println("realizado");
+            return true;           
+            }catch (SQLException e) {
+               e.printStackTrace();
+               return false;
+           }
     }
     
     //-----------------------------BUSCAR PROVEEDOR POR NOMBRE O POR ID--------------------------//
@@ -168,14 +161,14 @@ public class ProveedorDAO {
         
         if (connection != null) {
             try {
-                    String query = "SELECT * FROM proveedor WHERE UPPER(id) LIKE UPPER(? || '%') OR  UPPER(NOMBRE_EMPRESA) LIKE UPPER(? || '%')";
+                    String query = "SELECT * FROM stylebiker.proveedor WHERE UPPER(id) LIKE UPPER(? || '%') OR  UPPER(NOMBRE_EMPRESA) LIKE UPPER(? || '%')";
                     PreparedStatement preparedStatement = connection.prepareStatement(query);
                     preparedStatement.setString(1, parametro);
                     preparedStatement.setString(2, parametro);
                     ResultSet result = preparedStatement.executeQuery();
                     
                     while (result.next()) {
-                        Proveedor proveedor =  new Proveedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7));
+                        Proveedor proveedor =  new Proveedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6));
                         proveedoresEncontrados.add(proveedor);
                     }
             } catch (Exception e) {

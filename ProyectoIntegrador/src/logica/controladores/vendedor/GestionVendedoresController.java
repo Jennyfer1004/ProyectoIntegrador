@@ -46,6 +46,9 @@ public class GestionVendedoresController implements Initializable{
 	
     @FXML
     private TableColumn<Vendedor, String> direccionColumna;
+    
+    @FXML
+    private TableColumn<Vendedor, String> estadoColumna;
 
     @FXML
     private Button crearVendedorBoton;
@@ -58,6 +61,12 @@ public class GestionVendedoresController implements Initializable{
 
     @FXML
     private Button eliminarVendedorBoton;
+    
+    @FXML
+    private Button buscarBoton;
+    
+    @FXML
+    private Button cargarDatosBoton;
 
     @FXML
     private TextField inputBuscar;
@@ -67,6 +76,10 @@ public class GestionVendedoresController implements Initializable{
     private VendedorService vendedorService;
  
     AdministradorView adminView = new AdministradorView();
+    
+    private String cedulaOriginal;
+
+    
 
     @FXML
     void onBuscarVendedorClicked(MouseEvent event) {
@@ -119,11 +132,16 @@ public class GestionVendedoresController implements Initializable{
 
     }
 
+    
+    
+    
     @FXML
     void onGuardarCambiosClicked(MouseEvent event) {
     	
         Vendedor vendedorSeleccionado = tabla.getSelectionModel().getSelectedItem();
         if (vendedorSeleccionado != null) {
+        	
+        	
         	if (vendedorSeleccionado.isEditado()) {
         		//boolean actualizado = true;
         		//System.out.println(clienteSeleccionado.getCedula()+clienteSeleccionado.getNombreCompleto()+clienteSeleccionado.getCorreo()+clienteSeleccionado.getDireccion());
@@ -167,19 +185,23 @@ public class GestionVendedoresController implements Initializable{
     	tabla.setEditable(true);
         this.vendedorService = new VendedorService();
         this.listaClientes =  FXCollections.observableArrayList(); 
-        cedulaColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+       // cedulaColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         nombreCompletoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+        direccionColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         correoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         telefonoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
-        direccionColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        estadoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         
         // Asignar los valores de las celdas a las propiedades del objeto Cliente
         cedulaColumna.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         nombreCompletoColumna.setCellValueFactory(new PropertyValueFactory<>("nombreCompleto"));
+        direccionColumna.setCellValueFactory(new PropertyValueFactory<>("direccion"));
         correoColumna.setCellValueFactory(new PropertyValueFactory<>("correo"));
         telefonoColumna.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-        direccionColumna.setCellValueFactory(new PropertyValueFactory<>("direccion"));
-
+        
+        estadoColumna.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        
         // Agregar manejadores para la edición de celdas
         cedulaColumna.setOnEditCommit(event -> {
             Vendedor vendedor = event.getRowValue();
@@ -191,6 +213,11 @@ public class GestionVendedoresController implements Initializable{
         	vendedor.setNombreCompleto(event.getNewValue());
         	vendedor.setEditado(true);
         });
+        direccionColumna.setOnEditCommit(event -> {
+        	Vendedor vendedor = event.getRowValue();
+        	vendedor.setDireccion(event.getNewValue());
+        	vendedor.setEditado(true);
+        });
         correoColumna.setOnEditCommit(event -> {
         	Vendedor vendedor = event.getRowValue();
         	vendedor.setCorreo(event.getNewValue());
@@ -198,14 +225,14 @@ public class GestionVendedoresController implements Initializable{
         });
         telefonoColumna.setOnEditCommit(event -> {
         	Vendedor vendedor = event.getRowValue();
-        	vendedor.setCorreo(event.getNewValue());
+        	vendedor.setTelefono(event.getNewValue());
         	vendedor.setEditado(true);
         });
-        direccionColumna.setOnEditCommit(event -> {
+        
+        estadoColumna.setOnEditCommit(event -> {
         	Vendedor vendedor = event.getRowValue();
-        	vendedor.setDireccion(event.getNewValue());
+        	vendedor.setEstado(event.getNewValue());
         	vendedor.setEditado(true);
         });
-		
 	}
 }

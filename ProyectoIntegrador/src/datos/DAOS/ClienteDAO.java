@@ -5,9 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLWarning;
 import java.sql.Statement;
-import java.sql.Types;
 import java.util.LinkedList;
 
 import datos.ConexionDB;
@@ -74,7 +72,8 @@ public class ClienteDAO {
             if (e.getErrorCode() == 1) { // 1 es el código de error para violación de clave única
                 System.err.println("Error: La cédula ya existe.");
             } else {
-                e.printStackTrace(); // Otras excepciones, imprime la traza de la excepción
+            	System.err.println("Error de SQL: " + e.getMessage());
+                e.printStackTrace();
             }
             return false;
         }
@@ -125,17 +124,19 @@ public class ClienteDAO {
     public boolean editarCliente(Cliente cliente) {
         ConexionDB conn = new ConexionDB();
         try (Connection connection = conn.obtenerConexionAdmin();
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE stylebiker.cliente SET nombre_completo = ?, correo = ?, direccion = ?, estado = ? WHERE cedula = ?")) {
+        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.MOD_CLIENTE(?, ?, ?, ?, ?) }")) {
 
-               preparedStatement.setString(1, cliente.getNombreCompleto());
-               preparedStatement.setString(2, cliente.getCorreo());
-               preparedStatement.setString(3, cliente.getDireccion());
-               preparedStatement.setString(4, cliente.getEstado());
-               preparedStatement.setString(5, cliente.getCedula());
+            callableStatement.setString(1, cliente.getCedula());
+            callableStatement.setString(2, cliente.getNombreCompleto());
+            callableStatement.setString(3, cliente.getCorreo());
+            callableStatement.setString(4, cliente.getTelefono());
+            callableStatement.setString(5, cliente.getDireccion());
 
-               int filasModificadas = preparedStatement.executeUpdate();
-               return filasModificadas > 0;
-           } catch (SQLException e) {
+            callableStatement.execute();
+
+            // No hay advertencias, pero verifica si se lanzó una excepción
+            System.out.println("realizado");
+            return true;           } catch (SQLException e) {
                e.printStackTrace();
                return false;
            }

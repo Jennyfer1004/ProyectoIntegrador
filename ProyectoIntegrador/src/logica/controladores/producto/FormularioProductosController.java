@@ -21,8 +21,7 @@ public class FormularioProductosController {
 	private Button botonCancelar;
 	@FXML
 	private Button botonRegistrar;
-	@FXML
-	private TextField inputCodigo;
+	
 	@FXML
 	private TextField inputNombre;
 	@FXML
@@ -31,6 +30,10 @@ public class FormularioProductosController {
 	private TextField inputValorCompra;
 	@FXML
 	private TextField inputStock;
+	@FXML
+	private TextField inputEstado;
+	@FXML
+	private TextField inputProveedor;
 	@FXML
 	private Label Codigotexfild;
 	@FXML

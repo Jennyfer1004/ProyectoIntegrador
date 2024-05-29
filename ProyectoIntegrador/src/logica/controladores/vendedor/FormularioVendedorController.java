@@ -7,9 +7,11 @@ import java.util.ResourceBundle;
 import datos.DAOS.VendedorDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import logica.VendedorService;
@@ -32,6 +34,8 @@ public class FormularioVendedorController implements Initializable{
 	private TextField inputTelefono;
 	@FXML
 	private TextField inputDireccion;
+	@FXML
+	private TextField inputEstado;
 	
     private VendedorDAO vendedorDAO;
     
@@ -49,20 +53,34 @@ public class FormularioVendedorController implements Initializable{
 		
 		String cedula = inputCedula.getText();
     	String nombreCompleto = inputNomCompleto.getText();
+
+    	String direccion = inputDireccion.getText();
     	String correo = inputCorreo.getText();
     	String telefono = inputTelefono.getText();
-    	String direccion = inputDireccion.getText();
     	
-    	boolean insercionExitosa = vendedorDAO.registrarVendedor(cedula, nombreCompleto, correo, telefono, direccion);
+    	String estado = inputEstado.getText();
+    	
+    	boolean insercionExitosa = vendedorDAO.registrarVendedor(cedula, nombreCompleto,direccion, correo, telefono, estado);
         
         // Si la inserción fue exitosa, agregar el cliente a la lista observable
         if (insercionExitosa) {
-        	vendedorService.agregarVendedor(cedula, nombreCompleto, correo, telefono, direccion);
+        	mostrarAlerta("CONFIRMACION", "Se registro el vendedor correctamente" ,AlertType.CONFIRMATION);
+        	vendedorService.agregarVendedor(cedula, nombreCompleto,direccion, correo, telefono,estado);
+        }else {
+        	mostrarAlerta("Registro fallido", "No se pudo crear, verifica los campos " ,AlertType.ERROR);
         }
 		
 	}
 	
-    
+	private void mostrarAlerta(String titulo, String mensaje, AlertType tipo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+	
+	
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
     	vendedorService = new VendedorService();

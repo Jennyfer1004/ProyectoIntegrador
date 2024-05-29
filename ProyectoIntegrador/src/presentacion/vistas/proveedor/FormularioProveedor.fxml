@@ -14,25 +14,24 @@
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="botonCancelar" layoutX="246.0" layoutY="441.0" mnemonicParsing="false" text="CANCELAR" />
-      <Button fx:id="botonRegistrar" layoutX="348.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#onRegistrarProveedor" text="REGISTRAR" />
-      <TextField fx:id="inputId" layoutX="273.0" layoutY="97.0" />
-      <TextField fx:id="inputNombreEmpresa" layoutX="273.0" layoutY="154.0" />
-      <TextField fx:id="inputDireccion" layoutX="273.0" layoutY="209.0" />
-      <TextField fx:id="inputTelefono" layoutX="273.0" layoutY="260.0" />
-      <TextField fx:id="inputCorreo" layoutX="273.0" layoutY="316.0" />
-      <Label layoutX="84.0" layoutY="101.0" text="ID" textFill="WHITE" />
-      <Label layoutX="84.0" layoutY="158.0" text="NOMBRE EMPRESA" textFill="WHITE" />
-      <Label layoutX="86.0" layoutY="264.0" text="TELEFONO" textFill="WHITE" />
-      <Label layoutX="84.0" layoutY="320.0" text="CORREO" textFill="WHITE" />
-      <Label layoutX="83.0" layoutY="213.0" text="DIRECCION" textFill="WHITE" />
+      <Button fx:id="botonRegistrar" layoutX="195.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#onRegistrarProveedor" text="REGISTRAR" />
+      <TextField fx:id="inputNombreEmpresa" layoutX="273.0" layoutY="97.0" />
+      <TextField fx:id="inputDireccion" layoutX="273.0" layoutY="146.0" />
+      <TextField fx:id="inputTelefono" layoutX="273.0" layoutY="197.0" />
+      <TextField fx:id="inputCorreo" layoutX="273.0" layoutY="238.0" />
+      <Label layoutX="78.0" layoutY="101.0" text="NOMBRE EMPRESA" textFill="WHITE" />
+      <Label layoutX="77.0" layoutY="201.0" text="TELEFONO" textFill="WHITE" />
+      <Label layoutX="77.0" layoutY="242.0" text="CORREO" textFill="WHITE" />
+      <Label layoutX="77.0" layoutY="150.0" text="DIRECCION" textFill="WHITE" />
       <Label layoutX="184.0" layoutY="46.0" prefHeight="28.0" prefWidth="143.0" text="REGISTRO" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Black" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="inputProductosSuministrados" layoutX="273.0" layoutY="371.0" />
-      <Label layoutX="81.0" layoutY="375.0" text="PRODUCTOS SUMINISTRADOS" textFill="WHITE" />
+      <TextField fx:id="inputProductosSuministrados" layoutX="273.0" layoutY="285.0" />
+      <Label layoutX="68.0" layoutY="289.0" text="PRODUCTOS SUMINISTRADOS" textFill="WHITE" />
+      <Label layoutX="77.0" layoutY="329.0" text="ESTADO" textFill="WHITE" />
+      <TextField fx:id="inputEstado" layoutX="273.0" layoutY="325.0" />
       
    </children>
 </AnchorPane>

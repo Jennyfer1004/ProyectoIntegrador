@@ -1,5 +1,6 @@
 package datos.DAOS;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class VendedorDAO {
                 String query = "select * from stylebiker.empleado";
                 ResultSet result = st.executeQuery(query);
                 while(result.next()) {
-                    Vendedor c = new Vendedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5));
+                    Vendedor c = new Vendedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6));
                     vendedorDatos.add(c);
                     
                 }
@@ -56,32 +57,33 @@ public class VendedorDAO {
      * @param direccion Dirección del vendedor.
      * @return true si el vendedor se registró correctamente, false de lo contrario.
      */
-    public boolean registrarVendedor(String cedula, String nombreCompleto, String correo, String telefono, String direccion){
+    public boolean registrarVendedor(String cedula, String nombreCompleto, String direccion, String correo, String telefono, String estado){
 
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexionAdmin();
-        if (connection != null) {
-            try {
-                String query = "INSERT INTO empleado (cedula, nombre_completo, correo, telefono, direccion) VALUES (?,?,?,?,?) ";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, cedula);
-                preparedStatement.setString(2, nombreCompleto);
-                preparedStatement.setString(3, correo);
-                preparedStatement.setString(4, telefono);
-                preparedStatement.setString(5, direccion);
-                int filasInsertadas = preparedStatement.executeUpdate();
-                return filasInsertadas > 0;
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    connection.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return false;
+        try (Connection connection = conn.obtenerConexionAdmin();
+                CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.INS_EMPLEADO(?, ?, ?, ?, ?, ?) }")) {
+
+               callableStatement.setString(1, cedula);
+               callableStatement.setString(2, nombreCompleto);
+               callableStatement.setString(3, direccion);
+               callableStatement.setString(4, correo);
+               callableStatement.setString(5, telefono);
+               callableStatement.setString(6, estado);
+
+               callableStatement.execute();
+
+               // No hay advertencias, pero verifica si se lanzó una excepción
+               System.out.println("realizado");
+               return true; // Si no hubo excepciones, asume que se realizó correctamente
+           } catch (SQLException e) {
+               if (e.getErrorCode() == 1) { // 1 es el código de error para violación de clave única
+                   System.err.println("Error: La cédula ya existe.");
+               } else {
+               	System.err.println("Error de SQL: " + e.getMessage());
+                   e.printStackTrace();
+               }
+               return false;
+           }
     }
     
     //---------------------ELIMINAR UN VENDEDOR----------------------//
@@ -124,29 +126,24 @@ public class VendedorDAO {
      */
     public boolean editarVendedor(Vendedor vendedor) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexionAdmin();
-        if (connection != null) {
-            try {
-                String query = "UPDATE empleado SET nombre_completo = ?, correo = ?, direccion = ? WHERE cedula = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, vendedor.getNombreCompleto());
-                preparedStatement.setString(2, vendedor.getCorreo());
-                preparedStatement.setString(3, vendedor.getDireccion());
-                preparedStatement.setString(4, vendedor.getCedula());
-                
-                int filasModificadas = preparedStatement.executeUpdate();
-                return filasModificadas > 0;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return false;
+        try (Connection connection = conn.obtenerConexionAdmin();
+        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.MOD_EMPLEADO(?, ?, ?, ?, ?) }")) {
+        	
+        	callableStatement.setString(1, vendedor.getCedula());
+            callableStatement.setString(2, vendedor.getNombreCompleto());
+            callableStatement.setString(3, vendedor.getDireccion());
+            callableStatement.setString(4, vendedor.getCorreo());
+            callableStatement.setString(5, vendedor.getTelefono());
+
+            callableStatement.execute();
+
+            // No hay advertencias, pero verifica si se lanzó una excepción
+            System.out.println("realizado");
+            return true;           
+            }catch (SQLException e) {
+               e.printStackTrace();
+               return false;
+           }
     }
     
     //-----------------------------BUSCAR VENDEDOR POR NOMBRE O POR CEDULA--------------------------//
@@ -162,14 +159,14 @@ public class VendedorDAO {
         
         if (connection != null) {
             try {
-                String query = "SELECT * FROM empleado WHERE UPPER(cedula) LIKE UPPER(? || '%') OR  UPPER(nombre_completo) LIKE UPPER(? || '%')";
+                String query = "SELECT * FROM stylebiker.empleado WHERE UPPER(cedula) LIKE UPPER(? || '%') OR  UPPER(nombre_completo) LIKE UPPER(? || '%')";
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, parametro);
                 preparedStatement.setString(2, parametro);
                 ResultSet result = preparedStatement.executeQuery();
                 
                 while (result.next()) {
-                    Vendedor vendedor =  new Vendedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5));
+                    Vendedor vendedor =  new Vendedor(result.getString(1),result.getString(2),result.getString(3), result.getString(4), result.getString(5), result.getString(6));
                     vendedoresEncontrados.add(vendedor);
                 }
             } catch (Exception e) {

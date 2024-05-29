@@ -52,6 +52,8 @@ public class GestionProveedoresController implements Initializable{
 	@FXML
 	private TableColumn <Proveedor, String> productosSuministradosColumna;
 	@FXML
+	private TableColumn <Proveedor, String> estadoColumna;
+	@FXML
 	private Button eliminarProveedorBoton;
 	@FXML
 	private TextField inputBuscar;
@@ -113,18 +115,19 @@ public class GestionProveedoresController implements Initializable{
 	    void onEliminarProveedorClicked(MouseEvent event) {
 	        Proveedor  proveedorSeleccionado= tabla.getSelectionModel().getSelectedItem();
 	        if (proveedorSeleccionado != null) {
-	            boolean eliminado = proveedorService.eliminarProveedor(proveedorSeleccionado);
-	            if (eliminado) {
+	            //boolean eliminado = proveedorService.eliminarProveedor(proveedorSeleccionado);
+	            //if (eliminado) {
 
 	                tabla.getItems().remove(proveedorSeleccionado);
 	                mostrarAlerta("Eliminación Exitosa", "El Proveedor ha sido eliminado correctamente.", AlertType.INFORMATION);
 	            } else {
 	                mostrarAlerta("Error", "No se pudo eliminar el Proveedor.", AlertType.ERROR);
 	            }
-	        } else {
-	            mostrarAlerta("Error", "Por favor, seleccione un Proveedor para eliminar.", AlertType.WARNING);
-	        }
 	    }
+	       // } else {
+	       //     mostrarAlerta("Error", "Por favor, seleccione un Proveedor para eliminar.", AlertType.WARNING);
+	     //   }
+	   // }
 
 	    @FXML
 	    void onGuardarCambiosClicked(MouseEvent event) {
@@ -155,27 +158,29 @@ public class GestionProveedoresController implements Initializable{
 			tabla.setEditable(true);
 	        this.proveedorService = new ProveedorService();
 	        this.listaProveedores =  FXCollections.observableArrayList(); 
-	        idColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+	        //idColumna.setCellFactory(TextFieldTableCell.forTableColumn());
 	        nombreEmpresaColumna.setCellFactory(TextFieldTableCell.forTableColumn());
 	        direccionColumna.setCellFactory(TextFieldTableCell.forTableColumn());
 	        telefonoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
 	        correoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
 	        productosSuministradosColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+	        estadoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
 	        
 	        // Asignar los valores de las celdas a las propiedades del objeto Proveedor
-	        idColumna.setCellValueFactory(new PropertyValueFactory<>("id"));
+	        //idColumna.setCellValueFactory(new PropertyValueFactory<>("id"));
 	        nombreEmpresaColumna.setCellValueFactory(new PropertyValueFactory<>("nombreEmpresa"));
 	        direccionColumna.setCellValueFactory(new PropertyValueFactory<>("direccion"));
 	        telefonoColumna.setCellValueFactory(new PropertyValueFactory<>("telefono"));
 	        correoColumna.setCellValueFactory(new PropertyValueFactory<>("correo"));
 	        productosSuministradosColumna.setCellValueFactory(new PropertyValueFactory<>("productosSuministrados"));
+	        estadoColumna.setCellValueFactory(new PropertyValueFactory<>("estado"));
 
 	        // Agregar manejadores para la edición de celdas
-	        idColumna.setOnEditCommit(event -> {
-	            Proveedor proveedor = event.getRowValue();
-	            proveedor.setId(event.getNewValue());
-	            proveedor.setEditado(true);
-	        });
+	        //idColumna.setOnEditCommit(event -> {
+	         //   Proveedor proveedor = event.getRowValue();
+	         //   proveedor.setId(event.getNewValue());
+	       //     proveedor.setEditado(true);
+	       // });
 	        nombreEmpresaColumna.setOnEditCommit(event -> {
 	        	Proveedor proveedor = event.getRowValue();
 	        	proveedor.setNombreEmpresa(event.getNewValue());
@@ -201,7 +206,11 @@ public class GestionProveedoresController implements Initializable{
 	        	proveedor.setProductosSuministrados(event.getNewValue());
 	        	proveedor.setEditado(true);
 	        });
-	        
+	        estadoColumna.setOnEditCommit(event -> {
+	        	Proveedor proveedor = event.getRowValue();
+	        	proveedor.setEstado(event.getNewValue());
+	        	proveedor.setEditado(true);
+	        });
 			
 		}
 }

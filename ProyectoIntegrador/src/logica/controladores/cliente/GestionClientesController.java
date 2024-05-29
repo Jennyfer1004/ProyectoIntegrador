@@ -186,7 +186,7 @@ public class GestionClientesController implements Initializable{
     	tabla.setEditable(true);
         this.clienteService = new ClienteService();
         this.listaClientes =  FXCollections.observableArrayList(); 
-        cedulaColumna.setCellFactory(TextFieldTableCell.forTableColumn());
+        //cedulaColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         nombreCompletoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         correoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         telefonoColumna.setCellFactory(TextFieldTableCell.forTableColumn());

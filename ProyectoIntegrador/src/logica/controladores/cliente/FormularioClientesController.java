@@ -84,15 +84,9 @@ public class FormularioClientesController implements Initializable{
         
         // Si la inserción fue exitosa, agregar el cliente a la lista observable
         if (insercionExitosa) {
-        	mostrarAlerta("CONFIRMACION", "Se creo el cliente correctamente" ,AlertType.CONFIRMATION);
+        	mostrarAlerta("CONFIRMACION", "Se registro el cliente correctamente" ,AlertType.CONFIRMATION);
             clienteService.agregarCliente(cedula, nombreCompleto, correo, telefono, direccion, estado);
-            if (Usuarios.getRol().equals("administrador")) {
-            	gcv.show((Stage)botonVolverPrincipal.getScene().getWindow());
-            }else if (Usuarios.getRol().equals("vendedor")) {
-            	gcv.show((Stage)botonVolverPrincipal.getScene().getWindow());
-            }else{
-            	mostrarAlerta("Inicio de Sesión Fallido", "Credenciales incorrectas para " ,AlertType.ERROR);
-            } 
+            
         }
         else {
         	mostrarAlerta("Registro fallido", "No se pudo crear, verifica los campos " ,AlertType.ERROR);
