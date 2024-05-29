@@ -95,26 +95,22 @@ public class VendedorDAO {
      */
     public boolean eliminarVendedor(String cedula) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexionAdmin();
-        if (connection != null) {
-            try {
-                String query = "DELETE FROM empleado WHERE cedula = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, cedula);
-                
-                int filasEliminadas = preparedStatement.executeUpdate();
-                return filasEliminadas > 0;
+        try (Connection connection = conn.obtenerConexionAdmin();
+        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.elim_empleado(?, ?) }")) {
+
+           
+            callableStatement.setString(1, cedula);
+            callableStatement.setString(2, "Inactivo");
+
+            callableStatement.execute();
+
+            // No hay advertencias, pero verifica si se lanzó una excepción 
+            System.out.println("realizado");
+            return true;           
             } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return false;
+               e.printStackTrace();
+               return false;
+           }
     }
     
     //-------------------------MODIFICAR-EDITAR-ACTUALIZAR VENDEDOR------------------------------//

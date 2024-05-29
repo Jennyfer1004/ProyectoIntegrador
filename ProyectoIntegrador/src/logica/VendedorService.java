@@ -48,8 +48,8 @@ public class VendedorService {
      * @param vendedor Vendedor a eliminar.
      * @return true si se eliminó correctamente, false de lo contrario.
      */
-    public boolean eliminarVendedor(Vendedor vendedor) {
-        return vendedorDAO.eliminarVendedor(vendedor.getCedula());
+    public boolean eliminarVendedor(String cedula) {
+        return vendedorDAO.eliminarVendedor(cedula);
     }
 
     /**

@@ -50,8 +50,8 @@ public class ClienteService {
      * @param cliente Cliente a eliminar.
      * @return true si se eliminó correctamente, false de lo contrario.
      */
-    public boolean eliminarCliente(Cliente cliente) {
-        return clienteDAO.eliminarCliente(cliente.getCedula());
+    public boolean eliminarCliente(String cedula) {
+        return clienteDAO.eliminarCliente(cedula);
     }
     
     /**

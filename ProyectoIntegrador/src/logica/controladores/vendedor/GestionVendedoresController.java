@@ -117,11 +117,16 @@ public class GestionVendedoresController implements Initializable{
     	
         Vendedor vendedorSeleccionado = tabla.getSelectionModel().getSelectedItem();
         if (vendedorSeleccionado != null) {
+        	String cedula = vendedorSeleccionado.getCedula();
+        	String estado = vendedorSeleccionado.getEstado();
+        	if ("Inactivo".equals(estado)) {
+                mostrarAlerta("Error", "El vendedor ya está inactivo y no se puede eliminar nuevamente.", AlertType.ERROR);
+                return; // Salir del método sin continuar con la eliminación
+            }
         	//System.out.println(clienteSeleccionado.getCedula());
-            boolean eliminado = vendedorService.eliminarVendedor(vendedorSeleccionado);
+            boolean eliminado = vendedorService.eliminarVendedor(cedula);
             if (eliminado) {
 
-                tabla.getItems().remove(vendedorSeleccionado);
                 mostrarAlerta("Eliminación Exitosa", "El vendedor ha sido eliminado correctamente.", AlertType.INFORMATION);
             } else {
                 mostrarAlerta("Error", "No se pudo eliminar el vendedor.", AlertType.ERROR);
@@ -203,11 +208,11 @@ public class GestionVendedoresController implements Initializable{
         estadoColumna.setCellValueFactory(new PropertyValueFactory<>("estado"));
         
         // Agregar manejadores para la edición de celdas
-        cedulaColumna.setOnEditCommit(event -> {
-            Vendedor vendedor = event.getRowValue();
-            vendedor.setCedula(event.getNewValue());
-            vendedor.setEditado(true);
-        });
+        //cedulaColumna.setOnEditCommit(event -> {
+        //    Vendedor vendedor = event.getRowValue();
+        //    vendedor.setCedula(event.getNewValue());
+        //    vendedor.setEditado(true);
+        //});
         nombreCompletoColumna.setOnEditCommit(event -> {
         	Vendedor vendedor = event.getRowValue();
         	vendedor.setNombreCompleto(event.getNewValue());

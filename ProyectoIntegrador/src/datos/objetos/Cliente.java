@@ -27,12 +27,7 @@ public class Cliente {
 	public String getNombreCompleto() {
 		return nombreCompleto;
 	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+	
 	public void setNombreCompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
 	}
@@ -54,6 +49,12 @@ public class Cliente {
 	}
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public boolean isEditado() {
         return editado;

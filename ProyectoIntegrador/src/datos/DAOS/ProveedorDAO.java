@@ -95,28 +95,25 @@ public class ProveedorDAO {
      * @param id ID del proveedor a eliminar.
      * @return true si el proveedor se eliminó correctamente, false de lo contrario.
      */
-    public boolean eliminarProveedor(String id) {
+    public boolean eliminarProveedor(String nombre) {
         ConexionDB conn = new ConexionDB();
-        Connection connection = conn.obtenerConexionAdmin();
-        if (connection != null) {
-            try {
-                String query = "DELETE FROM proveedor WHERE id = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, id);
-                
-                int filasEliminadas = preparedStatement.executeUpdate();
-                return filasEliminadas > 0;
+        try (Connection connection = conn.obtenerConexionAdmin();
+        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.elim_proveedor(?, ?) }")) {
+
+           
+            callableStatement.setString(1, nombre);
+            callableStatement.setString(2, "Inactivo");
+
+            callableStatement.execute();
+
+            // No hay advertencias, pero verifica si se lanzó una excepción 
+            System.out.println("realizado");
+            return true;           
             } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return false;
+               e.printStackTrace();
+               return false;
+           }
+    
     }
     
     //-------------------------MODIFICAR-EDITAR-ACTUALIZAR PROVEEDOR------------------------------//

@@ -2,37 +2,27 @@ package logica.controladores.cliente;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
-import datos.DAOS.ClienteDAO;
 import datos.objetos.Cliente;
 import datos.objetos.Usuarios;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import logica.ClienteService;
 import presentacion.vistas.administrador.AdministradorView;
 import presentacion.vistas.cliente.FormularioClientesView;
 import presentacion.vistas.gerente.GerenteView;
-import presentacion.vistas.iniciarSesion.IniciarSesionView;
 import presentacion.vistas.vendedor.VendedorView;
 
 public class GestionClientesController implements Initializable{
@@ -76,12 +66,8 @@ public class GestionClientesController implements Initializable{
     @FXML
     private Button buscarBoton;
     
-    private  ObservableList<Cliente> listaClientes;
-
     @FXML
     private TextField inputBuscar;
-   	
-   	private ClienteDAO clienteDAO;
    	
    	private ClienteService clienteService;
 
@@ -131,11 +117,16 @@ public class GestionClientesController implements Initializable{
 
         Cliente clienteSeleccionado = tabla.getSelectionModel().getSelectedItem();
         if (clienteSeleccionado != null) {
+        	String cedula = clienteSeleccionado.getCedula();
+        	String estado = clienteSeleccionado.getEstado();
+        	if ("Inactivo".equals(estado)) {
+                mostrarAlerta("Error", "El cliente ya está inactivo y no se puede eliminar nuevamente.", AlertType.ERROR);
+                return; // Salir del método sin continuar con la eliminación
+            }
         	//System.out.println(clienteSeleccionado.getCedula());
-            boolean eliminado = clienteService.eliminarCliente(clienteSeleccionado);
+            boolean eliminado = clienteService.eliminarCliente(cedula);
             if (eliminado) {
 
-                tabla.getItems().remove(clienteSeleccionado);
                 mostrarAlerta("Eliminación Exitosa", "El cliente ha sido eliminado correctamente.", AlertType.INFORMATION);
             } else {
                 mostrarAlerta("Error", "No se pudo eliminar el cliente.", AlertType.ERROR);
@@ -185,7 +176,7 @@ public class GestionClientesController implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1) {
     	tabla.setEditable(true);
         this.clienteService = new ClienteService();
-        this.listaClientes =  FXCollections.observableArrayList(); 
+        FXCollections.observableArrayList(); 
         //cedulaColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         nombreCompletoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         correoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -202,11 +193,11 @@ public class GestionClientesController implements Initializable{
         estadoColumna.setCellValueFactory(new PropertyValueFactory<>("estado"));
 
         // Agregar manejadores para la edición de celdas
-        cedulaColumna.setOnEditCommit(event -> {
-            Cliente cliente = event.getRowValue();
-            cliente.setCedula(event.getNewValue());
-            cliente.setEditado(true);
-        });
+        //cedulaColumna.setOnEditCommit(event -> {
+        //    Cliente cliente = event.getRowValue();
+       //     cliente.setCedula(event.getNewValue());
+        //    cliente.setEditado(true);
+       // });
         nombreCompletoColumna.setOnEditCommit(event -> {
             Cliente cliente = event.getRowValue();
             cliente.setNombreCompleto(event.getNewValue());

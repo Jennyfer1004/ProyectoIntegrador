@@ -49,9 +49,9 @@ public class ProveedorService {
      * @param proveedor Proveedor a eliminar.
      * @return true si se eliminó correctamente, false de lo contrario.
      */
-    //public boolean eliminarProveedor(Proveedor proveedor) {
-//       return proveedorDAO.eliminarProveedor(proveedor.getId());
-    //
+    public boolean eliminarProveedor(String nombre) {
+    	return proveedorDAO.eliminarProveedor(nombre);
+    }
 
     /**
      * Edita un proveedor.

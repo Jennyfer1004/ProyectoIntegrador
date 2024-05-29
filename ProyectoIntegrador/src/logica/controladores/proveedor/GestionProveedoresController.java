@@ -115,19 +115,24 @@ public class GestionProveedoresController implements Initializable{
 	    void onEliminarProveedorClicked(MouseEvent event) {
 	        Proveedor  proveedorSeleccionado= tabla.getSelectionModel().getSelectedItem();
 	        if (proveedorSeleccionado != null) {
-	            //boolean eliminado = proveedorService.eliminarProveedor(proveedorSeleccionado);
-	            //if (eliminado) {
-
-	                tabla.getItems().remove(proveedorSeleccionado);
+	        	String nombre = proveedorSeleccionado.getNombreEmpresa();
+	        	String estado = proveedorSeleccionado.getEstado();
+	        	if ("Inactivo".equals(estado)) {
+	                mostrarAlerta("Error", "El proveedor ya está inactivo y no se puede eliminar nuevamente.", AlertType.ERROR);
+	                return; // Salir del método sin continuar con la eliminación
+	            }
+	            boolean eliminado = proveedorService.eliminarProveedor(nombre);
+	            if (eliminado) {
 	                mostrarAlerta("Eliminación Exitosa", "El Proveedor ha sido eliminado correctamente.", AlertType.INFORMATION);
 	            } else {
 	                mostrarAlerta("Error", "No se pudo eliminar el Proveedor.", AlertType.ERROR);
 	            }
+	    
+	        } else {
+	            mostrarAlerta("Error", "Por favor, seleccione un Proveedor para eliminar.", AlertType.WARNING);
+	        }
 	    }
-	       // } else {
-	       //     mostrarAlerta("Error", "Por favor, seleccione un Proveedor para eliminar.", AlertType.WARNING);
-	     //   }
-	   // }
+	    
 
 	    @FXML
 	    void onGuardarCambiosClicked(MouseEvent event) {
