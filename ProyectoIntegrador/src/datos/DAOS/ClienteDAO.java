@@ -54,7 +54,7 @@ public class ClienteDAO {
         ConexionDB conn = new ConexionDB();
 
         try (Connection connection = conn.obtenerConexionAdmin();
-             CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.ins_cliente(?, ?, ?, ?, ?, ?) }")) {
+             CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.insertarCliente(?, ?, ?, ?, ?, ?) }")) {
 
             callableStatement.setString(1, cedula);
             callableStatement.setString(2, nombreCompleto);
@@ -93,7 +93,7 @@ public class ClienteDAO {
     public boolean eliminarCliente(String cedula) {
         ConexionDB conn = new ConexionDB();
         try (Connection connection = conn.obtenerConexionAdmin();
-        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.elim_cliente(?, ?) }")) {
+        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.eliminarCliente(?, ?) }")) {
 
            
             callableStatement.setString(1, cedula);
@@ -120,7 +120,7 @@ public class ClienteDAO {
     public boolean editarCliente(Cliente cliente) {
         ConexionDB conn = new ConexionDB();
         try (Connection connection = conn.obtenerConexionAdmin();
-        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.MOD_CLIENTE(?, ?, ?, ?, ?) }")) {
+        		CallableStatement callableStatement = connection.prepareCall("{ call stylebiker.modificarCliente(?, ?, ?, ?, ?) }")) {
 
             
             callableStatement.setString(1, cliente.getNombreCompleto());

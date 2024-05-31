@@ -37,9 +37,9 @@
               <columns>
                 <TableColumn fx:id="cedulaColumna" prefWidth="112.0" text="CEDULA" />
                 <TableColumn fx:id="nombreCompletoColumna" prefWidth="153.0" text="NOMBRE COMPLETO" />
-                  <TableColumn fx:id="direccionColumna" prefWidth="147.0" text="TELEFONO" />
-                  <TableColumn fx:id="correoColumna" prefWidth="152.0" text="DIRECCION" />
-                  <TableColumn fx:id="telefonoColumna" prefWidth="117.0" text="CORREO" />
+                  <TableColumn fx:id="direccionColumna" prefWidth="152.0" text="DIRECCION" />
+                  <TableColumn fx:id="correoColumna" prefWidth="117.0" text="CORREO" />
+                  <TableColumn fx:id="telefonoColumna" prefWidth="147.0" text="TELEFONO" />
                   <TableColumn fx:id="estadoColumna" prefWidth="75.0" text="ESTADO" />
               </columns>
                 <columnResizePolicy>

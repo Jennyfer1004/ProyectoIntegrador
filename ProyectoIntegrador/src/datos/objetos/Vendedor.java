@@ -12,7 +12,7 @@ public class Vendedor {
 
 	private boolean editado;
 
-    public Vendedor(String cedula, String nombreCompleto, String correo, String telefono, String direccion, String estado) {
+    public Vendedor(String cedula, String nombreCompleto,String direccion,  String correo, String telefono, String estado) {
         this.cedula = cedula;
         this.nombreCompleto = nombreCompleto;
         this.direccion = direccion;

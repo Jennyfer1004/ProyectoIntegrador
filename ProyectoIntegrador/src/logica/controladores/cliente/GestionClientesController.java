@@ -210,7 +210,7 @@ public class GestionClientesController implements Initializable{
         });
         telefonoColumna.setOnEditCommit(event -> {
             Cliente cliente = event.getRowValue();
-            cliente.setCorreo(event.getNewValue());
+            cliente.setTelefono(event.getNewValue());
             cliente.setEditado(true);
         });
         direccionColumna.setOnEditCommit(event -> {

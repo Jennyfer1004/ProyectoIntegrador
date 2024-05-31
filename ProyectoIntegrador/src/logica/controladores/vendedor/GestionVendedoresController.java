@@ -37,16 +37,17 @@ public class GestionVendedoresController implements Initializable{
 	
     @FXML
     private TableColumn<Vendedor, String> nombreCompletoColumna;
-	
+
+    @FXML
+    private TableColumn<Vendedor, String> direccionColumna;
+    
 	@FXML
     private TableColumn<Vendedor, String> correoColumna;
 	
     @FXML
     private TableColumn<Vendedor, String> telefonoColumna;
 	
-    @FXML
-    private TableColumn<Vendedor, String> direccionColumna;
-    
+
     @FXML
     private TableColumn<Vendedor, String> estadoColumna;
 
@@ -71,7 +72,7 @@ public class GestionVendedoresController implements Initializable{
     @FXML
     private TextField inputBuscar;
     
-    private  ObservableList<Cliente> listaClientes;
+    private  ObservableList<Vendedor> listaVendedor;
     
     private VendedorService vendedorService;
  
@@ -189,13 +190,12 @@ public class GestionVendedoresController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	tabla.setEditable(true);
         this.vendedorService = new VendedorService();
-        this.listaClientes =  FXCollections.observableArrayList(); 
+        this.listaVendedor =  FXCollections.observableArrayList(); 
        // cedulaColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         nombreCompletoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         direccionColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         correoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         telefonoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
-        
         estadoColumna.setCellFactory(TextFieldTableCell.forTableColumn());
         
         // Asignar los valores de las celdas a las propiedades del objeto Cliente
@@ -204,7 +204,6 @@ public class GestionVendedoresController implements Initializable{
         direccionColumna.setCellValueFactory(new PropertyValueFactory<>("direccion"));
         correoColumna.setCellValueFactory(new PropertyValueFactory<>("correo"));
         telefonoColumna.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-        
         estadoColumna.setCellValueFactory(new PropertyValueFactory<>("estado"));
         
         // Agregar manejadores para la edición de celdas
@@ -218,6 +217,7 @@ public class GestionVendedoresController implements Initializable{
         	vendedor.setNombreCompleto(event.getNewValue());
         	vendedor.setEditado(true);
         });
+
         direccionColumna.setOnEditCommit(event -> {
         	Vendedor vendedor = event.getRowValue();
         	vendedor.setDireccion(event.getNewValue());
@@ -233,7 +233,6 @@ public class GestionVendedoresController implements Initializable{
         	vendedor.setTelefono(event.getNewValue());
         	vendedor.setEditado(true);
         });
-        
         estadoColumna.setOnEditCommit(event -> {
         	Vendedor vendedor = event.getRowValue();
         	vendedor.setEstado(event.getNewValue());
