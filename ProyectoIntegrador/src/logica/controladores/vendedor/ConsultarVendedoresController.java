@@ -52,7 +52,6 @@ public class ConsultarVendedoresController implements Initializable{
 	
 	@FXML
 	public void onVolverClicked(MouseEvent event) throws IOException {
-		System.out.println("volver");
 		gv.show((Stage) botonVolvera.getScene().getWindow());
 	}
 

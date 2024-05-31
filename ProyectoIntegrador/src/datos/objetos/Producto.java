@@ -6,18 +6,18 @@ public class Producto {
 	private String descripcion;
 	private String valorCompra;
 	private String cantidadStock;
-	private String estado;
 	private String idProveedor;
+	private String estado;
 	private boolean editado;
 	
-	public Producto(String codigo, String nombre, String descripcion, String valorCompra, String cantidadStock, String estado, String idProveedor) {
+	public Producto(String codigo, String nombre, String descripcion, String valorCompra, String cantidadStock, String idProveedor, String estado) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.valorCompra = valorCompra;
 		this.cantidadStock = cantidadStock;
-		this.estado = estado;
 		this.idProveedor = idProveedor;
+		this.estado = estado;
 		this.editado = false; // Inicialmente el producto no ha sido editado
 	}
 	
