@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import datos.objetos.Cliente;
 import datos.objetos.Proveedor;
 import datos.objetos.Usuarios;
 import javafx.scene.control.Alert;
@@ -21,10 +20,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import logica.ClienteService;
 import logica.ProveedorService;
 import presentacion.vistas.administrador.AdministradorView;
-import presentacion.vistas.cliente.FormularioClientesView;
 import presentacion.vistas.gerente.GerenteView;
 import presentacion.vistas.proveedor.FormularioProveedorView;
 import presentacion.vistas.vendedor.VendedorView;
@@ -63,6 +60,7 @@ public class GestionProveedoresController implements Initializable{
 	private Button cargarDatosBoton;
 	
 	private ProveedorService proveedorService;
+	@SuppressWarnings("unused")
 	private  ObservableList<Proveedor> listaProveedores;
 
 	// Event Listener on Button[#botonVolverPrincipal1].onMouseClicked

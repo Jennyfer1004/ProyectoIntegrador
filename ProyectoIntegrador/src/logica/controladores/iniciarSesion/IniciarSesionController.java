@@ -129,7 +129,7 @@ public class IniciarSesionController {
         }
         
         @FXML
-        public String seleccionarRol(MouseEvent event) {
+        public String seleccionarRol(@SuppressWarnings("exports") MouseEvent event) {
         
         	RadioButton selectedRadioButton = (RadioButton) grupoRadios.getSelectedToggle();
             if (selectedRadioButton == radioButtonAdmin) {

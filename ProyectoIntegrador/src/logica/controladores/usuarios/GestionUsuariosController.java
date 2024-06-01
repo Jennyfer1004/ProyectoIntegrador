@@ -25,15 +25,15 @@ public class GestionUsuariosController {
 	GestionVendedoresView gestionVendedoresView = new GestionVendedoresView();
 	
 	@FXML
-	public void volverPrincipal(MouseEvent event) throws IOException {
+	public void volverPrincipal(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		administradorView.show((Stage)botonVolverPrincipal.getScene().getWindow());
 	}
 	@FXML
-	public void irGestionGerentes(MouseEvent event) throws IOException {
+	public void irGestionGerentes(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gestionGerentesView.show((Stage)botonGestGerentes.getScene().getWindow());
 	}
 	@FXML
-	public void irGestionVendedores(MouseEvent event) throws IOException {
+	public void irGestionVendedores(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gestionVendedoresView.show((Stage)botonGestVendedores.getScene().getWindow());
 	}
 }

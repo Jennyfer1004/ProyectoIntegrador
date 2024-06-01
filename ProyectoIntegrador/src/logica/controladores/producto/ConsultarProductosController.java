@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import datos.objetos.Producto;
 import datos.objetos.Usuarios;
-import datos.objetos.Vendedor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -53,12 +52,13 @@ public class ConsultarProductosController implements Initializable{
 	private Button botonVolver;
 	
 	private ProductoService productoService;
+	@SuppressWarnings("unused")
 	private  ObservableList<Producto> listaProductos;
 	GerenteView gerenteView = new GerenteView();
     VendedorView vendedorView = new VendedorView();
 
 	@FXML
-	public void onCargarDatosClicked(MouseEvent event) {
+	public void onCargarDatosClicked(@SuppressWarnings("exports") MouseEvent event) {
 		
 		this.tabla.getItems().clear();
         this.tabla.setItems(this.productoService.getProductos());
@@ -66,7 +66,7 @@ public class ConsultarProductosController implements Initializable{
 		
 	}
 	@FXML
-	public void onVolverClicked(MouseEvent event) throws IOException {
+	public void onVolverClicked(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		if (Usuarios.getRol().equals("gerente")) {
         	gerenteView.show((Stage) botonVolver.getScene().getWindow());
         }else if (Usuarios.getRol().equals("vendedor")) {

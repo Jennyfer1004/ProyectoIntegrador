@@ -39,28 +39,28 @@ public class GerenteController {
 	ConsultarVendedoresView cvev = new ConsultarVendedoresView();
 
 	@FXML
-	public void cerrarSesion(MouseEvent event) throws IOException {
+	public void cerrarSesion(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		iniciarSesionView.show((Stage)botonCerrarSesion.getScene().getWindow());
 	}
 	@FXML
-	public void onConsultarVendedoresClicked(MouseEvent event) throws IOException {
+	public void onConsultarVendedoresClicked(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		cvev.show((Stage) botonConsultarVendedores.getScene().getWindow());
 		
 	}
 	@FXML
-	public void onConsultarProductosClicked(MouseEvent event) throws IOException {
+	public void onConsultarProductosClicked(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		cpv.show((Stage) botonConsultarProductos.getScene().getWindow());
 	}
 	@FXML
-	public void onConsultarProveedoresClicked(MouseEvent event) throws IOException {
+	public void onConsultarProveedoresClicked(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		cprv.show((Stage) botonConsultarProveedores.getScene().getWindow());
 	}
 	@FXML
-	public void onConsultarFacturasClicked(MouseEvent event) throws IOException {
+	public void onConsultarFacturasClicked(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		cvv.show((Stage) botonConsFacturas.getScene().getWindow());
 	}
 	@FXML
-	public void onConsultarReportesClicked(MouseEvent event) throws IOException {
+	public void onConsultarReportesClicked(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		crv.show((Stage) botonConsulReportes.getScene().getWindow());
 	}
 }

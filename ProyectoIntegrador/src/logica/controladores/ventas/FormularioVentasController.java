@@ -41,7 +41,7 @@ public class FormularioVentasController {
 	GestionVentasView gvv = new GestionVentasView();
 
 	@FXML
-	public void volverAprincipal(MouseEvent event) throws IOException {
+	public void volverAprincipal(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gvv.show((Stage) botonVolverPrincipal.getScene().getWindow());
 		
 	}

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import datos.objetos.Cliente;
 import datos.objetos.Vendedor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,10 +19,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import logica.ClienteService;
 import logica.VendedorService;
 import presentacion.vistas.administrador.AdministradorView;
-import presentacion.vistas.cliente.FormularioClientesView;
 import presentacion.vistas.vendedor.FormularioVendedorView;
 
 public class GestionVendedoresController implements Initializable{
@@ -72,13 +69,15 @@ public class GestionVendedoresController implements Initializable{
     @FXML
     private TextField inputBuscar;
     
-    private  ObservableList<Vendedor> listaVendedor;
+    @SuppressWarnings("unused")
+	private  ObservableList<Vendedor> listaVendedor;
     
     private VendedorService vendedorService;
  
     AdministradorView adminView = new AdministradorView();
     
-    private String cedulaOriginal;
+    @SuppressWarnings("unused")
+	private String cedulaOriginal;
 
     
 
@@ -174,7 +173,7 @@ public class GestionVendedoresController implements Initializable{
 
 	// Event Listener on Button[#botonVolverPrincipal].onMouseClicked
 	@FXML
-	public void volverAprincipal(MouseEvent event) throws IOException {
+	public void volverAprincipal(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		adminView.show((Stage)botonVolverPrincipal.getScene().getWindow());
 	}
 	

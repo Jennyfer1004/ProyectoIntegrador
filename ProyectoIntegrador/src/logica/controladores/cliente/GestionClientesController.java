@@ -154,7 +154,7 @@ public class GestionClientesController implements Initializable{
     VendedorView vendedorView = new VendedorView();
 
     @FXML
-    public void volverAprincipal(MouseEvent event) throws IOException {
+    public void volverAprincipal(@SuppressWarnings("exports") MouseEvent event) throws IOException {
         if (Usuarios.getRol().equals("administrador")) {
         	administradorView.show((Stage)botonVolverPrincipal.getScene().getWindow());
         }else if (Usuarios.getRol().equals("vendedor")) {

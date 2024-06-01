@@ -1,7 +1,6 @@
 package logica;
 
 import java.util.LinkedList;
-
 import datos.DAOS.ProductoDAO;
 import datos.objetos.Producto;
 import javafx.collections.FXCollections;

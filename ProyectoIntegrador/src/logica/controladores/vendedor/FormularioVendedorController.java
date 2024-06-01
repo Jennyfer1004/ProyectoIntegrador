@@ -44,12 +44,12 @@ public class FormularioVendedorController implements Initializable{
     GestionVendedoresView gvv = new GestionVendedoresView();
 
 	@FXML
-	public void volverAprincipal(MouseEvent event) throws IOException {
+	public void volverAprincipal(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		
 		gvv.show((Stage)botonVolverPrincipal.getScene().getWindow());
 	}
 	@FXML
-	public void onRegistrarVendedor(MouseEvent event) {
+	public void onRegistrarVendedor(@SuppressWarnings("exports") MouseEvent event) {
 		
 		String cedula = inputCedula.getText();
     	String nombreCompleto = inputNomCompleto.getText();

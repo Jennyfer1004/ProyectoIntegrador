@@ -2,39 +2,20 @@ package logica.controladores.cliente;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import datos.DAOS.ClienteDAO;
-import datos.objetos.Cliente;
 import datos.objetos.Usuarios;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import logica.ClienteService;
-import presentacion.vistas.administrador.AdministradorView;
-import presentacion.vistas.cliente.FormularioClientesView;
 import presentacion.vistas.cliente.GestionClientesView;
-import presentacion.vistas.gerente.GerenteView;
-import presentacion.vistas.iniciarSesion.IniciarSesionView;
-import presentacion.vistas.vendedor.VendedorView;
 
 public class FormularioClientesController implements Initializable{
 
@@ -97,7 +78,7 @@ public class FormularioClientesController implements Initializable{
 
 
     @FXML
-    public void volverAprincipal(MouseEvent event) throws IOException {
+    public void volverAprincipal(@SuppressWarnings("exports") MouseEvent event) throws IOException {
         if (Usuarios.getRol().equals("administrador")) {
         	gcv.show((Stage)botonVolverPrincipal.getScene().getWindow());
         }else if (Usuarios.getRol().equals("vendedor")) {

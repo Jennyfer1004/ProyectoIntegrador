@@ -84,7 +84,7 @@ public class FormularioProductosController implements Initializable{
 
 	// Event Listener on Button[#botonVolverPrincipal].onMouseClicked
 	@FXML
-	public void volverAprincipal(MouseEvent event) throws IOException {
+	public void volverAprincipal(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gpv.show((Stage) botonVolverPrincipal.getScene().getWindow());
 		
 	}

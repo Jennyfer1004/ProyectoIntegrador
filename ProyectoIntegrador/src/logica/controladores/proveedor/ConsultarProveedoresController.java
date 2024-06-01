@@ -41,11 +41,12 @@ public class ConsultarProveedoresController implements Initializable {
 	private Button botonVolver;
 	
 	private ProveedorService proveedorService;
+	@SuppressWarnings("unused")
 	private  ObservableList<Proveedor> listaProveedores;
 
 	GerenteView gv = new GerenteView();
 	@FXML
-	public void onVolverClicked(MouseEvent event) throws IOException {
+	public void onVolverClicked(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gv.show((Stage) botonVolver.getScene().getWindow());
 		
 		

@@ -43,31 +43,31 @@ public class AdministradorController {
 	GestionVendedoresView  gestionVendedoresView = new GestionVendedoresView();
 
 	@FXML
-	public void cerrarSesion(MouseEvent event) throws IOException {
+	public void cerrarSesion(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		iniciarSesionView.show((Stage)botonCerrarSesion.getScene().getWindow());
 	}
 	@FXML
-	public void irGestionUsuarios(MouseEvent event) throws IOException {
+	public void irGestionUsuarios(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gestionVendedoresView.show((Stage)botonGestVendedor.getScene().getWindow());
 	}
 	@FXML
-	public void irGestionProductos(MouseEvent event) throws IOException {
+	public void irGestionProductos(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gestionProductosView.show((Stage)botonGestProductos.getScene().getWindow());
 	}
 	@FXML
-	public void irGestionClientes(MouseEvent event) throws IOException {
+	public void irGestionClientes(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gestionClientesView.show((Stage)botonGestCliente.getScene().getWindow());
 	}
 	@FXML
-	public void irGestionProveedores(MouseEvent event) throws IOException {
+	public void irGestionProveedores(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gestionProveedoresView.show((Stage)botonGestProveedores.getScene().getWindow());
 	}
 	@FXML
-	public void irGestionVentas(MouseEvent event) throws IOException {
+	public void irGestionVentas(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gestionVentasView.show((Stage)botonGestVentas.getScene().getWindow());
 	}
 	@FXML
-	public void irConsultarReportes(MouseEvent event) throws IOException {
+	public void irConsultarReportes(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gestionReportesView.show((Stage)botonConsulReportes.getScene().getWindow());
 	}
 }

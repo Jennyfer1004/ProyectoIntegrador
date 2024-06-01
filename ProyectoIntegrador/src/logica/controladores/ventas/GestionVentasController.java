@@ -1,56 +1,71 @@
 package logica.controladores.ventas;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import datos.objetos.Producto;
+import datos.objetos.ProductoFactura;
+import logica.ProductoFacturaService;
 import datos.objetos.Usuarios;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import logica.ProductoService;
 import presentacion.vistas.administrador.AdministradorView;
 import presentacion.vistas.gerente.GerenteView;
 import presentacion.vistas.vendedor.VendedorView;
 import presentacion.vistas.ventas.FormularioVentasView;
 
-public class GestionVentasController {
+public class GestionVentasController implements Initializable{
 	
     @FXML
     private Button buscarBoton;
 
+	@FXML
+    private TableView<ProductoFactura> tabla;
+    
     @FXML
-    private TableColumn<?, ?> cantidaddeproductoscolumn;
+    private TableColumn<ProductoFactura, String> codigoFacturaColumn;
 
     @FXML
-    private Button cargarDatosBoton;
+    private TableColumn<ProductoFactura, String> idProductoFacturaColumn;
 
     @FXML
-    private TableColumn<?, ?> codigocolumn;
+    private TableColumn<ProductoFactura, String> fechaRealizadaColumn;
 
     @FXML
-    private Button crearVentaBoton;
+    private TableColumn<ProductoFactura, String> cantidadProductoColumn;
 
     @FXML
-    private Button eliminarVentaBoton;
+    private TableColumn<ProductoFactura, String> precioPorUnidadColumn;
 
     @FXML
-    private TableColumn<?, ?> fecharealizadacolumn;
+    private TableColumn<ProductoFactura, String> cedulaVendedorColumn;
 
     @FXML
-    private TextField inputBuscar;
-
-    @FXML
-    private TableView<?> tabla;
-
-    @FXML
-    private TableColumn<?, ?> valorporunidadcolumn;
+    private TableColumn<ProductoFactura, String> cedulaClienteColumn;
 	
 	@FXML
     private Button botonVolverPrincipal;
+	
+	@FXML
+    private Button crearVentaBoton;
+
+	@FXML
+    private Button cargarDatosBoton;
+	
+	 private ProductoFacturaService ProductoFacturaService;
 	
 	AdministradorView administradorView = new AdministradorView();
     GerenteView gerenteView = new GerenteView();
@@ -85,7 +100,8 @@ public class GestionVentasController {
 
     @FXML
     void onCargarDatosClicked(MouseEvent event) {
-
+    	this.tabla.getItems().clear();
+        this.tabla.setItems(this.ProductoFacturaService.getProductosFactura());
     }
     FormularioVentasView fvv = new FormularioVentasView();
     @FXML
@@ -94,16 +110,17 @@ public class GestionVentasController {
 
     }
 
-    @FXML
-    void onEliminarVentaClicked(MouseEvent event) {
-
-    }
-
-    @FXML
-    void onGuardarCambiosClicked(MouseEvent event) {
-
-    }
-
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		this.ProductoFacturaService = new ProductoFacturaService();
+		codigoFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("codigoFactura"));
+		idProductoFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("idProductoFactura"));
+		fechaRealizadaColumn.setCellValueFactory(new PropertyValueFactory<>("fechaRealizada"));
+		cantidadProductoColumn.setCellValueFactory(new PropertyValueFactory<>("cantidadProducto"));
+		precioPorUnidadColumn.setCellValueFactory(new PropertyValueFactory<>("precioPorUnidad"));
+        cedulaVendedorColumn.setCellValueFactory(new PropertyValueFactory<>("cedulaVendedor"));
+        cedulaClienteColumn.setCellValueFactory(new PropertyValueFactory<>("cedulaCliente"));
+	}
 
 
 }

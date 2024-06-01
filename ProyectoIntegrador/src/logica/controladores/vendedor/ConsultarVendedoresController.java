@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import datos.objetos.Proveedor;
 import datos.objetos.Vendedor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,17 +40,18 @@ public class ConsultarVendedoresController implements Initializable{
 	@FXML
 	private Button botonVolvera;
 	private VendedorService vendedorService;
+	@SuppressWarnings("unused")
 	private  ObservableList<Vendedor> listaVendedores;
 	
 	GerenteView gv = new GerenteView();
 	@FXML
-	public void onConsultarVendedoresClicked(MouseEvent event) {
+	public void onConsultarVendedoresClicked(@SuppressWarnings("exports") MouseEvent event) {
 		this.tabla.getItems().clear();
         this.tabla.setItems(this.vendedorService.getVendedores());
 	}
 	
 	@FXML
-	public void onVolverClicked(MouseEvent event) throws IOException {
+	public void onVolverClicked(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 		gv.show((Stage) botonVolvera.getScene().getWindow());
 	}
 
