@@ -22,11 +22,6 @@
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="crearVentaBoton" layoutX="788.0" layoutY="249.0" mnemonicParsing="false" onMouseClicked="#onCrearVentaClicked" prefHeight="33.0" prefWidth="223.0" style="-fx-background-color: WHITE;" text="REGISTRAR NUEVO VENTA">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
-         </font>
-      </Button>
       <Label layoutX="862.0" layoutY="114.0" prefHeight="35.0" prefWidth="75.0" text="MENU" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
